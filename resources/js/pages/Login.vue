@@ -49,7 +49,7 @@ export default {
                 .then(({data}) => {
                     auth.login(data.token, data.refresh_token, data.user);
 
-                    this.$router.push('/dashboard');
+                    this.$router.push('/admin/dashboard');
                 })
                 .catch(({response}) => {
                     alert(response.data.message);

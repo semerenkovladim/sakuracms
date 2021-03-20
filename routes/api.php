@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategoriesController;
+use App\Http\Controllers\API\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +22,7 @@ Route::post('/login/refresh', [AuthController::class, 'refresh']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/products', [ProductsController::class, 'all']);
+    Route::get('/categories', [CategoriesController::class, 'all']);
+    Route::delete('/products/{id}', [ProductsController::class, 'delete']);
 });

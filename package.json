@@ -28,6 +28,8 @@
     "dependencies": {
         "buefy": "^0.9.4",
         "material-design-icons": "^3.0.1",
+        "tiptap": "^1.32.1",
+        "tiptap-extensions": "^1.35.1",
         "vue-cookies": "^1.7.4",
         "vuelidate": "^0.7.6"
     }

@@ -7,8 +7,8 @@ class API {
         const user = window.localStorage.getItem('user');
         const refresh_token = window.localStorage.getItem('refresh_token');
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-        axios[methods](url, payload).then((response) => {
-            return response;
+        return axios[methods](url, payload).then((response) => {
+            return response.data;
         }).catch((error) => {
             if(error.status === 401) {
                 const data = {
