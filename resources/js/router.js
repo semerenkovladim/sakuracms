@@ -6,6 +6,7 @@ import middlewarePipeline from "./middleware/middlewarePipeline";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import ProductCreate from "./pages/ProductCreate";
+import ProductUpdate from "./pages/ProductUpdate";
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,16 @@ const router = new VueRouter({
             path: '/admin/products/create',
             name: 'products.create',
             component: ProductCreate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/products/:id',
+            name: 'products.update',
+            component: ProductUpdate,
             meta: {
                 middleware: [
                     isAuth

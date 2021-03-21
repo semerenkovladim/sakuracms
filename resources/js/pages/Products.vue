@@ -116,8 +116,7 @@ export default {
         deleteProduct() {
             api.request('delete', '/api/products/' + this.deleteID);
             this.$buefy.toast.open('Product deleted');
-            this.data = [];
-            this.retriveApi();
+            this.data.splice(this.deleteID - 1, 1);
         }
     }
 }

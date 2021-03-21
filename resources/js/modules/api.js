@@ -2,11 +2,12 @@ class API {
     constructor() {
     }
 
-    request (methods, url, payload = null) {
+    request (methods, url, payload = null, contentType = 'application/json') {
         const token = window.localStorage.getItem('token');
         const user = window.localStorage.getItem('user');
         const refresh_token = window.localStorage.getItem('refresh_token');
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+        axios.defaults.headers.common['Content-Type'] = contentType;
         return axios[methods](url, payload).then((response) => {
             return response.data;
         }).catch((error) => {

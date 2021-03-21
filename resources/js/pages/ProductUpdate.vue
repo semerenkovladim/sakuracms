@@ -6,7 +6,7 @@
                 <form class="is-flex is-flex-wrap-wrap">
                     <b-field class="column is-12-mobile is-4" label="Product title*">
                         <b-input placeholder="Product title"
-                                 v-model="title"
+                                 v-model="product.title"
                                  type="text"
                                  required
                                  maxlength="255">
@@ -14,7 +14,7 @@
                     </b-field>
                     <b-field class="column is-12-mobile is-4" label="Product price*">
                         <b-input placeholder="Product price"
-                                 v-model="price"
+                                 v-model="product.price"
                                  type="number"
                                  required>
                         </b-input>
@@ -23,37 +23,37 @@
                         <b-taginput
                             maxlength="10"
                             placeholder="Product meta tags"
-                            v-model="meta_tags">
+                            v-model="product.meta_tags">
                         </b-taginput>
                     </b-field>
                     <b-field class="column is-12-mobile is-6" label="Product description*">
                         <b-input type="textarea"
                                  maxlength="3000"
                                  required
-                                 placeholder="Product description" v-model="description">
+                                 placeholder="Product description" v-model="product.description">
                         </b-input>
                     </b-field>
                     <b-field class="column is-12-mobile is-6" label="Product short description*">
                         <b-input type="textarea"
                                  maxlength="255"
-                                 placeholder="Product short description" v-model="short_description"
+                                 placeholder="Product short description" v-model="product.short_description"
                                  required>
                         </b-input>
                     </b-field>
                     <b-field class="column is-12-mobile is-4" label="Product meta description">
                         <b-input type="textarea"
                                  maxlength="255"
-                                 placeholder="Product meta description" v-model="meta_description">
+                                 placeholder="Product meta description" v-model="product.meta_description">
                         </b-input>
                     </b-field>
                     <b-field class="column is-12-mobile is-4" label="Product meta title">
                         <b-input type="textarea"
                                  maxlength="255"
-                                 placeholder="Product meta title" v-model="meta_title">
+                                 placeholder="Product meta title" v-model="product.meta_title">
                         </b-input>
                     </b-field>
                     <b-field class="column is-12-mobile is-4" label="Product category*">
-                        <b-select placeholder="Select a category" v-model="category_id">
+                        <b-select placeholder="Select a category" v-model="product.category_id">
                             <option
                                 v-for="option in data"
                                 :value="option.id"
@@ -63,7 +63,7 @@
                         </b-select>
                     </b-field>
                     <b-field class="column is-12-mobile is-12" label="Product images*">
-                        <b-upload v-model="productImages"
+                        <b-upload v-model="product.productImages"
                                   multiple
                                   drag-drop required expanded>
                             <section class="section">
@@ -79,10 +79,10 @@
                             </section>
                         </b-upload>
                         <div class="tags">
-                            <span v-for="(file, index) in productImages"
+                            <span v-for="(file, index) in product.images"
                                   :key="index"
                                   class="tag is-primary" >
-                                {{file.name}}
+                                {{file.path.slice(file.path.lastIndexOf('/'))}}
                                 <button class="delete is-small"
                                         type="button"
                                         @click="deleteDropFile(index)">
@@ -91,7 +91,7 @@
                         </div>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">Create</b-button>
+                        <b-button type="is-primary" expanded @click="update" v-if="!disableBtn">Create</b-button>
                     </b-field>
                 </form>
                 <b-notification
@@ -110,71 +110,66 @@
 import Sidebar from "../components/Sidebar";
 
 export default {
-    name: "ProductCreate",
+    name: "ProductUpdate",
     components: {
         Sidebar,
     },
     data() {
         return {
-            title: '',
-            price: '',
-            description: '',
-            short_description: '',
-            meta_tags: [],
-            meta_description: '',
-            meta_title: '',
-            category_id: null,
+            product: {},
             data: [],
-            productImages: [],
             errorMsg: null,
             showError: false,
+            id: '',
+            tags: [],
+            images: [],
         }
     },
     methods: {
-        retriveApi() {
-            api.request('get', '/api/categories').then((response) => {
-                this.data = response[0];
-            });
-        },
         deleteDropFile(index) {
-            this.productImages.splice(index, 1);
+            this.product.images.splice(index, 1);
+            console.log(this.product.images);
         },
-        create() {
-            const images = this.productImages.filter(file => file.type.slice(0, file.type.lastIndexOf('/')) === 'image')
+        update() {
+            const images = this.product.images.filter(file => file.type.slice(0, file.type.lastIndexOf('/')) === 'image')
             if(images.length === 0) {
                 this.errorMsg = 'Your files aren\'t image. Please choose at least one image';
                 this.showError = true;
                 this.productImages = [];
                 return false;
             }
-            const tags = this.meta_tags.join(',');
+            if(this.product.meta_tags === null) {
+                const tags = this.product.meta_tags;
+            } else {
+                const tags = this.product.meta_tags.join(',');
+            }
             const form = new FormData();
-            form.append('title', this.title);
-            form.append('price', this.price);
-            form.append('description', this.description);
-            form.append('short_description', this.short_description);
+            form.append('title', this.product.title);
+            form.append('price', this.product.price);
+            form.append('description', this.product.description);
+            form.append('short_description', this.product.short_description);
             form.append('meta_tags', tags);
-            form.append('meta_description', this.meta_description);
-            form.append('meta_title', this.meta_title);
-            form.append('category_id', this.category_id);
+            form.append('meta_description', this.product.meta_description);
+            form.append('meta_title', this.product.meta_title);
+            form.append('category_id', this.product.category_id);
             images.map((image, index) => {
                 form.append(`images[${index}]`, image);
-            })
-            api.request('post','/api/products?_method=put', form,'multipart/form-data')
+            });
+            api.request('post',`/api/products/${this.id}`, form,'multipart/form-data')
                 .then((response) => {
                     this.$buefy.toast.open({
-                        message: 'Product added successful! You will be redirected to products list',
+                        message: 'Product update successful! You will be redirected to products list',
                         type: 'is-success'
                     });
                     setTimeout(() => {
                         this.$router.push('/admin/products');
                     }, 2000);
-            });
+                });
         }
     },
     computed: {
         disableBtn() {
-            if(!this.title || !this.price || !this.description || !this.short_description || !this.category_id || this.productImages.length === 0) {
+            if(!this.product.title || !this.product.price || !this.product.description || !this.product.short_description || !this.product.category_id || this.product.images.length === 0) {
                 return true;
             } else {
                 return false;
@@ -182,8 +177,15 @@ export default {
         }
     },
     created() {
-        this.retriveApi();
-    }
+        this.id = this.$route.params['id'];
+         api.request('get',`/api/product/${this.id}`).then((response) => {
+             this.product = response[0];
+        });
+         // this.images = this.product.images.map((image) => image);
+        api.request('get', '/api/categories').then((response) => {
+            this.data = response[0];
+        });
+    },
 }
 </script>
 

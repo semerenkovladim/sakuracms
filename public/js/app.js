@@ -2212,8 +2212,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProductCreate",
@@ -2231,7 +2229,9 @@ __webpack_require__.r(__webpack_exports__);
       meta_title: '',
       category_id: null,
       data: [],
-      productImages: []
+      productImages: [],
+      errorMsg: null,
+      showError: false
     };
   },
   methods: {
@@ -2245,7 +2245,44 @@ __webpack_require__.r(__webpack_exports__);
     deleteDropFile: function deleteDropFile(index) {
       this.productImages.splice(index, 1);
     },
-    create: function create() {}
+    create: function create() {
+      var _this2 = this;
+
+      var images = this.productImages.filter(function (file) {
+        return file.type.slice(0, file.type.lastIndexOf('/')) === 'image';
+      });
+
+      if (images.length === 0) {
+        this.errorMsg = 'Your files aren\'t image. Please choose at least one image';
+        this.showError = true;
+        this.productImages = [];
+        return false;
+      }
+
+      var tags = this.meta_tags.join(',');
+      var form = new FormData();
+      form.append('title', this.title);
+      form.append('price', this.price);
+      form.append('description', this.description);
+      form.append('short_description', this.short_description);
+      form.append('meta_tags', tags);
+      form.append('meta_description', this.meta_description);
+      form.append('meta_title', this.meta_title);
+      form.append('category_id', this.category_id);
+      images.map(function (image, index) {
+        form.append("images[".concat(index, "]"), image);
+      });
+      api.request('post', '/api/products?_method=put', form, 'multipart/form-data').then(function (response) {
+        _this2.$buefy.toast.open({
+          message: 'Product added successful! You will be redirected to products list',
+          type: 'is-success'
+        });
+
+        setTimeout(function () {
+          _this2.$router.push('/admin/products');
+        }, 2000);
+      });
+    }
   },
   computed: {
     disableBtn: function disableBtn() {
@@ -2258,6 +2295,217 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.retriveApi();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductUpdate.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductUpdate.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_Sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Sidebar */ "./resources/js/components/Sidebar.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "ProductUpdate",
+  components: {
+    Sidebar: _components_Sidebar__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      product: {},
+      data: [],
+      errorMsg: null,
+      showError: false,
+      id: '',
+      tags: [],
+      images: []
+    };
+  },
+  methods: {
+    deleteDropFile: function deleteDropFile(index) {
+      this.product.images.splice(index, 1);
+      console.log(this.product.images);
+    },
+    update: function update() {
+      var _this = this;
+
+      var images = this.product.images.filter(function (file) {
+        return file.type.slice(0, file.type.lastIndexOf('/')) === 'image';
+      });
+
+      if (images.length === 0) {
+        this.errorMsg = 'Your files aren\'t image. Please choose at least one image';
+        this.showError = true;
+        this.productImages = [];
+        return false;
+      }
+
+      if (this.product.meta_tags === null) {
+        var _tags = this.product.meta_tags;
+      } else {
+        var _tags2 = this.product.meta_tags.join(',');
+      }
+
+      var form = new FormData();
+      form.append('title', this.product.title);
+      form.append('price', this.product.price);
+      form.append('description', this.product.description);
+      form.append('short_description', this.product.short_description);
+      form.append('meta_tags', tags);
+      form.append('meta_description', this.product.meta_description);
+      form.append('meta_title', this.product.meta_title);
+      form.append('category_id', this.product.category_id);
+      images.map(function (image, index) {
+        form.append("images[".concat(index, "]"), image);
+      });
+      api.request('post', "/api/products/".concat(this.id), form, 'multipart/form-data').then(function (response) {
+        _this.$buefy.toast.open({
+          message: 'Product update successful! You will be redirected to products list',
+          type: 'is-success'
+        });
+
+        setTimeout(function () {
+          _this.$router.push('/admin/products');
+        }, 2000);
+      });
+    }
+  },
+  computed: {
+    disableBtn: function disableBtn() {
+      if (!this.product.title || !this.product.price || !this.product.description || !this.product.short_description || !this.product.category_id || this.product.images.length === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.id = this.$route.params['id'];
+    api.request('get', "/api/product/".concat(this.id)).then(function (response) {
+      _this2.product = response[0];
+    }); // this.images = this.product.images.map((image) => image);
+
+    api.request('get', '/api/categories').then(function (response) {
+      _this2.data = response[0];
+    });
   }
 });
 
@@ -2397,8 +2645,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteProduct: function deleteProduct() {
       api.request('delete', '/api/products/' + this.deleteID);
       this.$buefy.toast.open('Product deleted');
-      this.data = [];
-      this.retriveApi();
+      this.data.splice(this.deleteID - 1, 1);
     }
   }
 });
@@ -2634,10 +2881,12 @@ var API = /*#__PURE__*/function () {
       var _this = this;
 
       var payload = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var contentType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'application/json';
       var token = window.localStorage.getItem('token');
       var user = window.localStorage.getItem('user');
       var refresh_token = window.localStorage.getItem('refresh_token');
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      axios.defaults.headers.common['Content-Type'] = contentType;
       return axios[methods](url, payload).then(function (response) {
         return response.data;
       })["catch"](function (error) {
@@ -2674,14 +2923,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _middleware_isAuth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./middleware/isAuth */ "./resources/js/middleware/isAuth.js");
-/* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
-/* harmony import */ var _middleware_middlewarePipeline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./middleware/middlewarePipeline */ "./resources/js/middleware/middlewarePipeline.js");
-/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Dashboard */ "./resources/js/pages/Dashboard.vue");
-/* harmony import */ var _pages_Products__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Products */ "./resources/js/pages/Products.vue");
-/* harmony import */ var _pages_ProductCreate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/ProductCreate */ "./resources/js/pages/ProductCreate.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _middleware_isAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./middleware/isAuth */ "./resources/js/middleware/isAuth.js");
+/* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
+/* harmony import */ var _middleware_middlewarePipeline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./middleware/middlewarePipeline */ "./resources/js/middleware/middlewarePipeline.js");
+/* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Dashboard */ "./resources/js/pages/Dashboard.vue");
+/* harmony import */ var _pages_Products__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Products */ "./resources/js/pages/Products.vue");
+/* harmony import */ var _pages_ProductCreate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/ProductCreate */ "./resources/js/pages/ProductCreate.vue");
+/* harmony import */ var _pages_ProductUpdate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/ProductUpdate */ "./resources/js/pages/ProductUpdate.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2696,34 +2946,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_6__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_7__.default);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_7__.default({
+
+vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_8__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_8__.default({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [{
     path: '/admin/login',
     name: 'login',
-    component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_2__.default
   }, {
     path: '/admin/dashboard',
     name: 'dashboard',
-    component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__.default,
+    component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_4__.default,
     meta: {
-      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_0__.default]
+      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_1__.default]
     }
   }, {
     path: '/admin/products',
     name: 'products',
-    component: _pages_Products__WEBPACK_IMPORTED_MODULE_4__.default,
+    component: _pages_Products__WEBPACK_IMPORTED_MODULE_5__.default,
     meta: {
-      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_0__.default]
+      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_1__.default]
     }
   }, {
     path: '/admin/products/create',
     name: 'products.create',
-    component: _pages_ProductCreate__WEBPACK_IMPORTED_MODULE_5__.default,
+    component: _pages_ProductCreate__WEBPACK_IMPORTED_MODULE_6__.default,
     meta: {
-      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_0__.default]
+      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_1__.default]
+    }
+  }, {
+    path: '/admin/products/:id',
+    name: 'products.update',
+    component: _pages_ProductUpdate__WEBPACK_IMPORTED_MODULE_7__.default,
+    meta: {
+      middleware: [_middleware_isAuth__WEBPACK_IMPORTED_MODULE_1__.default]
     }
   }]
 });
@@ -2739,7 +2997,7 @@ router.beforeEach(function (to, from, next) {
     next: next
   };
   return middleware[0](_objectSpread(_objectSpread({}, context), {}, {
-    next: (0,_middleware_middlewarePipeline__WEBPACK_IMPORTED_MODULE_2__.default)(context, middleware, 1)
+    next: (0,_middleware_middlewarePipeline__WEBPACK_IMPORTED_MODULE_3__.default)(context, middleware, 1)
   }));
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -56169,6 +56427,45 @@ component.options.__file = "resources/js/pages/ProductCreate.vue"
 
 /***/ }),
 
+/***/ "./resources/js/pages/ProductUpdate.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/pages/ProductUpdate.vue ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ProductUpdate_vue_vue_type_template_id_0a37dfdf_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true& */ "./resources/js/pages/ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true&");
+/* harmony import */ var _ProductUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductUpdate.vue?vue&type=script&lang=js& */ "./resources/js/pages/ProductUpdate.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _ProductUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ProductUpdate_vue_vue_type_template_id_0a37dfdf_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ProductUpdate_vue_vue_type_template_id_0a37dfdf_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "0a37dfdf",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/ProductUpdate.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/Products.vue":
 /*!*****************************************!*\
   !*** ./resources/js/pages/Products.vue ***!
@@ -56304,6 +56601,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/ProductUpdate.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/pages/ProductUpdate.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProductUpdate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductUpdate.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductUpdate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/Products.vue?vue&type=script&lang=js&":
 /*!******************************************************************!*\
   !*** ./resources/js/pages/Products.vue?vue&type=script&lang=js& ***!
@@ -56418,6 +56731,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductCreate_vue_vue_type_template_id_6d77f692_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductCreate_vue_vue_type_template_id_6d77f692_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProductCreate.vue?vue&type=template&id=6d77f692&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductCreate.vue?vue&type=template&id=6d77f692&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/pages/ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductUpdate_vue_vue_type_template_id_0a37dfdf_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductUpdate_vue_vue_type_template_id_0a37dfdf_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductUpdate_vue_vue_type_template_id_0a37dfdf_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true&");
 
 
 /***/ }),
@@ -56999,315 +57329,754 @@ var render = function() {
             "is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
         },
         [
-          _c("div", { staticClass: "column is-12-mobile is-12" }, [
-            _c(
-              "form",
-              { staticClass: "is-flex is-flex-wrap-wrap" },
-              [
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-input", {
-                      attrs: {
-                        placeholder: "Product title",
-                        type: "text",
-                        icon: "email"
-                      },
-                      model: {
-                        value: _vm.title,
-                        callback: function($$v) {
-                          _vm.title = $$v
-                        },
-                        expression: "title"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-input", {
-                      attrs: {
-                        placeholder: "Product price",
-                        type: "number",
-                        icon: "email",
-                        required: "",
-                        "icon-right": "close-circle",
-                        "icon-right-clickable": "",
-                        minlength: "1",
-                        maxlength: "255"
-                      },
-                      on: {
-                        "icon-right-click": function($event) {
-                          _vm.price = ""
-                        }
-                      },
-                      model: {
-                        value: _vm.price,
-                        callback: function($$v) {
-                          _vm.price = $$v
-                        },
-                        expression: "price"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-input", {
-                      attrs: {
-                        type: "textarea",
-                        minlength: "10",
-                        maxlength: "2000",
-                        required: "",
-                        placeholder: "Product description"
-                      },
-                      model: {
-                        value: _vm.description,
-                        callback: function($$v) {
-                          _vm.description = $$v
-                        },
-                        expression: "description"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-input", {
-                      attrs: {
-                        type: "textarea",
-                        minlength: "10",
-                        maxlength: "255",
-                        placeholder: "Product short description",
-                        required: ""
-                      },
-                      model: {
-                        value: _vm.short_description,
-                        callback: function($$v) {
-                          _vm.short_description = $$v
-                        },
-                        expression: "short_description"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-input", {
-                      attrs: {
-                        type: "textarea",
-                        minlength: "10",
-                        maxlength: "255",
-                        placeholder: "Product meta description"
-                      },
-                      model: {
-                        value: _vm.meta_description,
-                        callback: function($$v) {
-                          _vm.meta_description = $$v
-                        },
-                        expression: "meta_description"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-input", {
-                      attrs: {
-                        type: "textarea",
-                        minlength: "10",
-                        maxlength: "255",
-                        placeholder: "Product meta title"
-                      },
-                      model: {
-                        value: _vm.meta_title,
-                        callback: function($$v) {
-                          _vm.meta_title = $$v
-                        },
-                        expression: "meta_title"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c("b-taginput", {
-                      attrs: {
-                        maxlength: "10",
-                        placeholder: "Product meta tags"
-                      },
-                      model: {
-                        value: _vm.meta_tags,
-                        callback: function($$v) {
-                          _vm.meta_tags = $$v
-                        },
-                        expression: "meta_tags"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12-mobile is-6" },
-                  [
-                    _c(
-                      "b-select",
-                      {
-                        attrs: { placeholder: "Select a category" },
-                        model: {
-                          value: _vm.category_id,
-                          callback: function($$v) {
-                            _vm.category_id = $$v
-                          },
-                          expression: "category_id"
-                        }
-                      },
-                      _vm._l(_vm.data, function(option) {
-                        return _c(
-                          "option",
-                          { key: option.id, domProps: { value: option.id } },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(option.title) +
-                                "\n                        "
-                            )
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12" },
-                  [
-                    _c(
-                      "b-upload",
-                      {
+          _c(
+            "div",
+            { staticClass: "column is-12-mobile is-12" },
+            [
+              _c(
+                "form",
+                { staticClass: "is-flex is-flex-wrap-wrap" },
+                [
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product title*" }
+                    },
+                    [
+                      _c("b-input", {
                         attrs: {
-                          multiple: "",
-                          "drag-drop": "",
+                          placeholder: "Product title",
+                          type: "text",
                           required: "",
-                          expanded: ""
+                          maxlength: "255"
                         },
                         model: {
-                          value: _vm.productImages,
+                          value: _vm.title,
                           callback: function($$v) {
-                            _vm.productImages = $$v
+                            _vm.title = $$v
                           },
-                          expression: "productImages"
+                          expression: "title"
                         }
-                      },
-                      [
-                        _c("section", { staticClass: "section" }, [
-                          _c(
-                            "div",
-                            { staticClass: "content has-text-centered" },
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product price*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          placeholder: "Product price",
+                          type: "number",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.price,
+                          callback: function($$v) {
+                            _vm.price = $$v
+                          },
+                          expression: "price"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product meta-tags" }
+                    },
+                    [
+                      _c("b-taginput", {
+                        attrs: {
+                          maxlength: "10",
+                          placeholder: "Product meta tags"
+                        },
+                        model: {
+                          value: _vm.meta_tags,
+                          callback: function($$v) {
+                            _vm.meta_tags = $$v
+                          },
+                          expression: "meta_tags"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-6",
+                      attrs: { label: "Product description*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "3000",
+                          required: "",
+                          placeholder: "Product description"
+                        },
+                        model: {
+                          value: _vm.description,
+                          callback: function($$v) {
+                            _vm.description = $$v
+                          },
+                          expression: "description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-6",
+                      attrs: { label: "Product short description*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "255",
+                          placeholder: "Product short description",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.short_description,
+                          callback: function($$v) {
+                            _vm.short_description = $$v
+                          },
+                          expression: "short_description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product meta description" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "255",
+                          placeholder: "Product meta description"
+                        },
+                        model: {
+                          value: _vm.meta_description,
+                          callback: function($$v) {
+                            _vm.meta_description = $$v
+                          },
+                          expression: "meta_description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product meta title" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "255",
+                          placeholder: "Product meta title"
+                        },
+                        model: {
+                          value: _vm.meta_title,
+                          callback: function($$v) {
+                            _vm.meta_title = $$v
+                          },
+                          expression: "meta_title"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product category*" }
+                    },
+                    [
+                      _c(
+                        "b-select",
+                        {
+                          attrs: { placeholder: "Select a category" },
+                          model: {
+                            value: _vm.category_id,
+                            callback: function($$v) {
+                              _vm.category_id = $$v
+                            },
+                            expression: "category_id"
+                          }
+                        },
+                        _vm._l(_vm.data, function(option) {
+                          return _c(
+                            "option",
+                            { key: option.id, domProps: { value: option.id } },
                             [
-                              _c(
-                                "p",
-                                [
-                                  _c("b-icon", {
-                                    attrs: { icon: "upload", size: "is-large" }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("p", [
-                                _vm._v(
-                                  "Drop your files here or click to upload"
-                                )
-                              ])
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(option.title) +
+                                  "\n                        "
+                              )
                             ]
                           )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "tags" },
-                      _vm._l(_vm.productImages, function(file, index) {
-                        return _c(
-                          "span",
-                          { key: index, staticClass: "tag is-primary" },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(file.name) +
-                                "\n                            "
-                            ),
-                            _c("button", {
-                              staticClass: "delete is-small",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteDropFile(index)
-                                }
-                              }
-                            })
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-field",
-                  { staticClass: "column is-12" },
-                  [
-                    !_vm.disableBtn
-                      ? _c(
-                          "b-button",
-                          {
-                            attrs: { type: "is-primary", expanded: "" },
-                            on: { click: _vm.create }
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-12",
+                      attrs: { label: "Product images*" }
+                    },
+                    [
+                      _c(
+                        "b-upload",
+                        {
+                          attrs: {
+                            multiple: "",
+                            "drag-drop": "",
+                            required: "",
+                            expanded: ""
                           },
-                          [_vm._v("Create")]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ])
+                          model: {
+                            value: _vm.productImages,
+                            callback: function($$v) {
+                              _vm.productImages = $$v
+                            },
+                            expression: "productImages"
+                          }
+                        },
+                        [
+                          _c("section", { staticClass: "section" }, [
+                            _c(
+                              "div",
+                              { staticClass: "content has-text-centered" },
+                              [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "upload",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "Drop your files here or click to upload"
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "tags" },
+                        _vm._l(_vm.productImages, function(file, index) {
+                          return _c(
+                            "span",
+                            { key: index, staticClass: "tag is-primary" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(file.name) +
+                                  "\n                            "
+                              ),
+                              _c("button", {
+                                staticClass: "delete is-small",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteDropFile(index)
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    { staticClass: "column is-12-mobile is-12" },
+                    [
+                      !_vm.disableBtn
+                        ? _c(
+                            "b-button",
+                            {
+                              attrs: { type: "is-primary", expanded: "" },
+                              on: { click: _vm.create }
+                            },
+                            [_vm._v("Create")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.showError
+                ? _c(
+                    "b-notification",
+                    {
+                      attrs: {
+                        type: "is-danger",
+                        "has-icon": "",
+                        "aria-close-label": "Close notification",
+                        role: "alert"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.errorMsg) +
+                          "\n            "
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          )
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ProductUpdate.vue?vue&type=template&id=0a37dfdf&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("Sidebar"),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "is-flex is-justify-content-center is-align-items-center is-flex-direction-column"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "column is-12-mobile is-12" },
+            [
+              _c(
+                "form",
+                { staticClass: "is-flex is-flex-wrap-wrap" },
+                [
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product title*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          placeholder: "Product title",
+                          type: "text",
+                          required: "",
+                          maxlength: "255"
+                        },
+                        model: {
+                          value: _vm.product.title,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "title", $$v)
+                          },
+                          expression: "product.title"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product price*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          placeholder: "Product price",
+                          type: "number",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.product.price,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "price", $$v)
+                          },
+                          expression: "product.price"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product meta-tags" }
+                    },
+                    [
+                      _c("b-taginput", {
+                        attrs: {
+                          maxlength: "10",
+                          placeholder: "Product meta tags"
+                        },
+                        model: {
+                          value: _vm.product.meta_tags,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "meta_tags", $$v)
+                          },
+                          expression: "product.meta_tags"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-6",
+                      attrs: { label: "Product description*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "3000",
+                          required: "",
+                          placeholder: "Product description"
+                        },
+                        model: {
+                          value: _vm.product.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "description", $$v)
+                          },
+                          expression: "product.description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-6",
+                      attrs: { label: "Product short description*" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "255",
+                          placeholder: "Product short description",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.product.short_description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "short_description", $$v)
+                          },
+                          expression: "product.short_description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product meta description" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "255",
+                          placeholder: "Product meta description"
+                        },
+                        model: {
+                          value: _vm.product.meta_description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "meta_description", $$v)
+                          },
+                          expression: "product.meta_description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product meta title" }
+                    },
+                    [
+                      _c("b-input", {
+                        attrs: {
+                          type: "textarea",
+                          maxlength: "255",
+                          placeholder: "Product meta title"
+                        },
+                        model: {
+                          value: _vm.product.meta_title,
+                          callback: function($$v) {
+                            _vm.$set(_vm.product, "meta_title", $$v)
+                          },
+                          expression: "product.meta_title"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-4",
+                      attrs: { label: "Product category*" }
+                    },
+                    [
+                      _c(
+                        "b-select",
+                        {
+                          attrs: { placeholder: "Select a category" },
+                          model: {
+                            value: _vm.product.category_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.product, "category_id", $$v)
+                            },
+                            expression: "product.category_id"
+                          }
+                        },
+                        _vm._l(_vm.data, function(option) {
+                          return _c(
+                            "option",
+                            { key: option.id, domProps: { value: option.id } },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(option.title) +
+                                  "\n                        "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    {
+                      staticClass: "column is-12-mobile is-12",
+                      attrs: { label: "Product images*" }
+                    },
+                    [
+                      _c(
+                        "b-upload",
+                        {
+                          attrs: {
+                            multiple: "",
+                            "drag-drop": "",
+                            required: "",
+                            expanded: ""
+                          },
+                          model: {
+                            value: _vm.product.productImages,
+                            callback: function($$v) {
+                              _vm.$set(_vm.product, "productImages", $$v)
+                            },
+                            expression: "product.productImages"
+                          }
+                        },
+                        [
+                          _c("section", { staticClass: "section" }, [
+                            _c(
+                              "div",
+                              { staticClass: "content has-text-centered" },
+                              [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "upload",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _vm._v(
+                                    "Drop your files here or click to upload"
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "tags" },
+                        _vm._l(_vm.product.images, function(file, index) {
+                          return _c(
+                            "span",
+                            { key: index, staticClass: "tag is-primary" },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(
+                                    file.path.slice(file.path.lastIndexOf("/"))
+                                  ) +
+                                  "\n                            "
+                              ),
+                              _c("button", {
+                                staticClass: "delete is-small",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteDropFile(index)
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-field",
+                    { staticClass: "column is-12-mobile is-12" },
+                    [
+                      !_vm.disableBtn
+                        ? _c(
+                            "b-button",
+                            {
+                              attrs: { type: "is-primary", expanded: "" },
+                              on: { click: _vm.update }
+                            },
+                            [_vm._v("Create")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.showError
+                ? _c(
+                    "b-notification",
+                    {
+                      attrs: {
+                        type: "is-danger",
+                        "has-icon": "",
+                        "aria-close-label": "Close notification",
+                        role: "alert"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.errorMsg) +
+                          "\n            "
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          )
         ]
       )
     ],
