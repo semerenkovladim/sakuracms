@@ -11,8 +11,8 @@
                     <b-menu-list>
                         <b-menu-item icon="slideshow" label="Showcase">
                             <b-menu-item label="Products" tag="router-link" to="/admin/products"></b-menu-item>
-                            <b-menu-item label="Tags" tag="router-link" to="/admin/tags"></b-menu-item>
-                            <b-menu-item label="Attributes" tag="router-link" to="/admin/attributes"></b-menu-item>
+<!--                            <b-menu-item label="Tags" tag="router-link" to="/admin/tags"></b-menu-item>-->
+<!--                            <b-menu-item label="Attributes" tag="router-link" to="/admin/attributes"></b-menu-item>-->
                             <b-menu-item label="Categories" tag="router-link" to="/admin/categories"></b-menu-item>
                         </b-menu-item>
                         <b-menu-item icon="slideshow" label="Business">

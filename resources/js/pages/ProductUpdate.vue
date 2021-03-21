@@ -63,7 +63,7 @@
                         </b-select>
                     </b-field>
                     <b-field class="column is-12-mobile is-12" label="Product images*">
-                        <b-upload v-model="product.productImages"
+                        <b-upload v-model="product.images"
                                   multiple
                                   drag-drop required expanded>
                             <section class="section">
@@ -82,7 +82,12 @@
                             <span v-for="(file, index) in product.images"
                                   :key="index"
                                   class="tag is-primary" >
-                                {{file.path.slice(file.path.lastIndexOf('/'))}}
+                                <template v-if="file.path">
+                                    {{file.path.slice(file.path.lastIndexOf('/'))}}
+                                </template>
+                                <template v-else>
+                                    {{file.name}}
+                                </template>
                                 <button class="delete is-small"
                                         type="button"
                                         @click="deleteDropFile(index)">
@@ -128,7 +133,19 @@ export default {
     methods: {
         deleteDropFile(index) {
             this.product.images.splice(index, 1);
-            console.log(this.product.images);
+        },
+        async retrievApi() {
+            let { data } = await axios.get(`/api/product/${this.id}`);
+            this.product = data[0];
+            if(this.product.meta_tags !== null) {
+                this.product.meta_tags = this.product.meta_tags.split(',');
+            } else {
+                this.product.meta_tags = [];
+            }
+        },
+        async retrievCategory() {
+            let { data } = await axios.get(`/api/categories`);
+            this.data = data[0];
         },
         update() {
             const images = this.product.images.filter(file => file.type.slice(0, file.type.lastIndexOf('/')) === 'image')
@@ -138,10 +155,11 @@ export default {
                 this.productImages = [];
                 return false;
             }
+            let tags = [];
             if(this.product.meta_tags === null) {
-                const tags = this.product.meta_tags;
+                tags = null;
             } else {
-                const tags = this.product.meta_tags.join(',');
+                tags = this.product.meta_tags.join(',');
             }
             const form = new FormData();
             form.append('title', this.product.title);
@@ -178,13 +196,8 @@ export default {
     },
     created() {
         this.id = this.$route.params['id'];
-         api.request('get',`/api/product/${this.id}`).then((response) => {
-             this.product = response[0];
-        });
-         // this.images = this.product.images.map((image) => image);
-        api.request('get', '/api/categories').then((response) => {
-            this.data = response[0];
-        });
+        this.retrievApi();
+        this.retrievCategory();
     },
 }
 </script>

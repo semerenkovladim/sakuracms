@@ -34,7 +34,21 @@
         </b-table-column>
 
         <b-table-column field="description" label="Description" v-slot="props">
-            {{ props.row.description }}
+            <template v-if="props.row.description.length > 255">
+                {{ props.row.description.slice(0, 255) }}
+                <b-collapse :open="false" position="is-bottom" aria-id="contentIdForA11y1">
+                    <template #trigger="props">
+                        <a aria-controls="contentIdForA11y1">
+                            <b-icon :icon="!props.open ? 'menu-down' : 'menu-up'"></b-icon>
+                            {{ !props.open ? 'All options' : 'Fewer options' }}
+                        </a>
+                    </template>
+                    {{ props.row.description.slice(256) }}
+                </b-collapse>
+            </template>
+            <template v-else>
+                {{ props.row.description }}
+            </template>
         </b-table-column>
 
         <b-table-column field="short_description" label="Short Description" v-slot="props">
@@ -55,6 +69,10 @@
 
         <b-table-column field="category" label="Category" v-slot="props">
             {{ props.row.category.title }}
+        </b-table-column>
+
+        <b-table-column field="price" label="Price" v-slot="props">
+            {{ props.row.price }}
         </b-table-column>
 
         <b-table-column field="date" label="Date" centered v-slot="props">
