@@ -11,13 +11,13 @@ class API {
         return axios[methods](url, payload).then((response) => {
             return response.data;
         }).catch((error) => {
-            if(error.status === 401) {
+            if(error.response.status === 401) {
                 const data = {
                     refresh_token: refresh_token
                 }
                 axios.post('/api/login/refresh', data)
-                    .then(({data}) => {
-                        auth.login(data.token, data.refresh_token, data.user);
+                    .then((res) => {
+                        auth.login(res.data.token, res.data.refresh_token, res.data.user);
                         this.request(methods, url, payload);
                     })
 

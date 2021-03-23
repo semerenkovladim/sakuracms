@@ -5,9 +5,9 @@
     <div class="columns">
         <div class="column">
             <div class="buttons">
-                <a class="button is-primary" href="/admin/products/create">
+                <router-link to="products/create" class="button is-primary">
                     <strong>Create new product</strong>
-                </a>
+                </router-link>
             </div>
         </div>
     </div>

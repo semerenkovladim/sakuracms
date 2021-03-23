@@ -1,16 +1,6 @@
 <template>
     <div class="container">
         <Sidebar/>
-
-        <div class="columns">
-            <div class="column">
-                <div class="buttons">
-                    <router-link to="categories/create" class="button is-primary">
-                        <strong>Create new category</strong>
-                    </router-link>
-                </div>
-            </div>
-        </div>
         <b-table
             :data="data">
 
@@ -18,21 +8,30 @@
                 {{ props.row.id }}
             </b-table-column>
 
-            <b-table-column field="title" label="Title" v-slot="props">
-                {{ props.row.title }}
+            <b-table-column label="User email" v-slot="props">
+                {{ props.row.user.email }}
             </b-table-column>
 
-            <b-table-column field="category" label="Parent category" v-slot="props">
-                <template v-if="props.row.category">
-                    {{ props.row.category.title }}
-                </template>
-                <template v-else>
-                    none
-                </template>
+            <b-table-column label="User full name" v-slot="props">
+                {{ `${props.row.user.name} ${props.row.user.surname}` }}
             </b-table-column>
 
-            <b-table-column field="products" label="Count of products" v-slot="props">
-                {{ props.row.products.length }}
+            <b-table-column label="Products" v-slot="props">
+                <div v-for="product in props.row.products">
+                    <div>Title: {{ product.title }}</div>
+                    <div>Price: {{ product.price }}</div>
+                </div>
+            </b-table-column>
+
+            <b-table-column label="Total" v-slot="props">
+                {{ props.row.total }}
+            </b-table-column>
+
+            <b-table-column label="Status" v-slot="props">
+                <b-tag type="is-dark" v-if="props.row.status.title === 'Created'">{{ props.row.status.title }}</b-tag>
+                <b-tag type="is-info" v-else-if="props.row.status.title === 'Accepted'">{{ props.row.status.title }}</b-tag>
+                <b-tag type="is-primary" v-else-if="props.row.status.title === 'Confirmed'">{{ props.row.status.title }}</b-tag>
+                <b-tag type="is-success" v-else>{{ props.row.status.title }}</b-tag>
             </b-table-column>
 
             <b-table-column field="date" label="Date" centered v-slot="props">
@@ -48,8 +47,8 @@
             </b-table-column>
 
             <b-table-column label="Update" v-slot="props">
-                <b-button>
-                    <router-link :to="'/admin/categories/' + props.row.id">
+                <b-button v-if="props.row.status.title !== 'Completed'">
+                    <router-link :to="'/admin/orders/' + props.row.id">
                         <b-icon icon="file-edit"/>
                     </router-link>
                 </b-button>
@@ -63,7 +62,7 @@
 import Sidebar from "../components/Sidebar";
 
 export default {
-    name: "Categories",
+    name: "Orders",
     components: {
         Sidebar,
     },
@@ -80,25 +79,20 @@ export default {
             this.showPopup = true;
             this.$buefy.dialog.confirm({
                 message: 'Do you want delete ' + title,
-                onConfirm: () => this.deleteCategory()
+                onConfirm: () => this.deleteOrders()
             })
         },
-        deleteCategory() {
-            api.request('delete', '/api/categories/' + this.deleteID);
-            this.$buefy.toast.open('Category deleted');
+        deleteOrders() {
+            api.request('delete', '/api/orders/' + this.deleteID);
+            this.$buefy.toast.open('Order deleted');
             this.data.splice(this.deleteID - 1, 1);
-            this.data.filter((item) => {
-                if(item.category_id === this.deleteID) {
-                    item.category = null;
-                }
-            })
         }
     },
     created() {
-        api.request('get', '/api/categories').then((response) => {
-            this.data = response[0];
+        api.request('get','/api/orders').then((res) => {
+            this.data = res[0];
         });
-    },
+    }
 }
 </script>
 

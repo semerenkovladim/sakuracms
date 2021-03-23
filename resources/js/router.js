@@ -7,6 +7,11 @@ import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import ProductCreate from "./pages/ProductCreate";
 import ProductUpdate from "./pages/ProductUpdate";
+import Categories from "./pages/Categories";
+import CategoryCreate from "./pages/CategoryCreate";
+import CategoryUpdate from "./pages/CategoryUpdate";
+import Orders from "./pages/Orders";
+import OrderUpdate from "./pages/OrderUpdate";
 
 Vue.use(VueRouter);
 
@@ -58,7 +63,57 @@ const router = new VueRouter({
                     isAuth
                 ]
             }
-        }
+        },
+        {
+            path: '/admin/categories',
+            name: 'categories',
+            component: Categories,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/categories/create',
+            name: 'categories.create',
+            component: CategoryCreate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/categories/:id',
+            name: 'categories.update',
+            component: CategoryUpdate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/orders',
+            name: 'orders',
+            component: Orders,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/orders/:id',
+            name: 'orders.update',
+            component: OrderUpdate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
     ]
 });
 router.beforeEach((to, from, next) => {

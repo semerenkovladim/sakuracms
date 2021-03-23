@@ -17,8 +17,8 @@
                         </b-menu-item>
                         <b-menu-item icon="slideshow" label="Business">
                             <b-menu-item label="Orders" tag="router-link" to="/admin/orders"></b-menu-item>
-                            <b-menu-item label="Messages" tag="router-link" to="/admin/messages"></b-menu-item>
-                            <b-menu-item label="Reviews" tag="router-link" to="/admin/reviews"></b-menu-item>
+<!--                            <b-menu-item label="Messages" tag="router-link" to="/admin/messages"></b-menu-item>-->
+<!--                            <b-menu-item label="Reviews" tag="router-link" to="/admin/reviews"></b-menu-item>-->
                         </b-menu-item>
                         <b-menu-item icon="slideshow" label="Themes">
                             <b-menu-item label="Themes" tag="router-link" to="/admin/themes"></b-menu-item>
