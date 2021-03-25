@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductTranslation extends Model
+class Subscriber extends Model
 {
     use HasFactory;
 
-    public function product() {
-        return $this->belongsTo(Product::class);
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }

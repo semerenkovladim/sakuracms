@@ -20,25 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdc89ca3-9b20-4df1-ad00-7811f703065e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CurrenciesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CategoryTranslation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Currency.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/ProductTranslation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/CurrenciesSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/Currencies.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/CurrencyCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/CurrencyUpdate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/NewslettersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PromotionsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_194302_create_newsletter_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_194644_create_promotion_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_194943_create_promotion_product_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_195554_create_subscribers_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/Newsletter.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/NewsletterCreate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Language.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_110014_create_product_translations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_110034_create_category_translations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_141318_create_currencies_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_110753_add_language_id_to_product_translations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_111027_add_language_id_to_category_translations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_111507_add_price_to_product_translations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_111937_add_category_id_to_category_translations_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CategoryTranslationsSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/ProductTranslationsSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Attribute.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Promotion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AttributeProduct.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AttributeValue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CategoryTranslation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Newsletter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductTranslation.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Sidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router.js" afterDir="false" />
@@ -230,7 +228,8 @@
       <workItem from="1616351808850" duration="2780000" />
       <workItem from="1616495874524" duration="13831000" />
       <workItem from="1616665523280" duration="5727000" />
-      <workItem from="1616681299181" duration="5440000" />
+      <workItem from="1616681299181" duration="5611000" />
+      <workItem from="1616700299162" duration="6180000" />
     </task>
     <servers />
   </component>
@@ -261,10 +260,10 @@
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="499" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.43.1536.821@0.43.1536.821" timestamp="1616686710007" />
-    <state x="499" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616684878241">
+    <state x="499" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616706697821">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="499" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.43.1536.821@0.43.1536.821" timestamp="1616684878241" />
+    <state x="499" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.43.1536.821@0.43.1536.821" timestamp="1616706697821" />
     <state x="586" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616506371505">
       <screen x="0" y="43" width="1536" height="821" />
     </state>

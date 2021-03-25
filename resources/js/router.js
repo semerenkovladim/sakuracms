@@ -18,6 +18,9 @@ import LanguageCreate from "./pages/LanguageCreate";
 import Currencies from "./pages/Currencies";
 import CurrencyUpdate from "./pages/CurrencyUpdate";
 import CurrencyCreate from "./pages/CurrencyCreate";
+import Newsletter from "./pages/Newsletter";
+import NewsletterCreate from "./pages/NewsletterCreate";
+import Promotions from "./pages/Promotions";
 
 Vue.use(VueRouter);
 
@@ -174,6 +177,36 @@ const router = new VueRouter({
             path: '/admin/currency/:id',
             name: 'currencies.update',
             component: CurrencyUpdate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/newsletters',
+            name: 'newsletters',
+            component: Newsletter,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/newsletter/create',
+            name: 'newsletters.create',
+            component: NewsletterCreate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/promotions',
+            name: 'promotions',
+            component: Promotions,
             meta: {
                 middleware: [
                     isAuth

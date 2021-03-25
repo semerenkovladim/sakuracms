@@ -4,10 +4,12 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoriesController;
 use App\Http\Controllers\API\CurrenciesController;
 use App\Http\Controllers\API\LanguagesController;
+use App\Http\Controllers\API\NewslettersController;
 use App\Http\Controllers\API\OrdersController;
 use App\Http\Controllers\API\OrderStatusesController;
 use App\Http\Controllers\API\ProductsController;
 use App\Http\Controllers\API\ProductTranslationsController;
+use App\Http\Controllers\API\PromotionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,4 +60,16 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/currencies', [CurrenciesController::class, 'create']);
     Route::post('/currencies/{id}', [CurrenciesController::class, 'update']);
     Route::delete('/currencies/{id}', [CurrenciesController::class, 'delete']);
+
+    Route::get('/newsletters', [NewslettersController::class, 'index']);
+    Route::get('/newsletter/{id}', [NewslettersController::class, 'show']);
+    Route::put('/newsletters', [NewslettersController::class, 'create']);
+    Route::post('/newsletters/{id}', [NewslettersController::class, 'update']);
+    Route::delete('/newsletters/{id}', [NewslettersController::class, 'delete']);
+
+    Route::get('/promotions', [PromotionsController::class, 'index']);
+    Route::get('/promotion/{id}', [PromotionsController::class, 'show']);
+    Route::put('/promotions', [PromotionsController::class, 'create']);
+    Route::post('/promotions/{id}', [PromotionsController::class, 'update']);
+    Route::delete('/promotions/{id}', [PromotionsController::class, 'delete']);
 });

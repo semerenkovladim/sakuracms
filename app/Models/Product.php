@@ -29,4 +29,9 @@ class Product extends Model
         return $this->belongsToMany(File::class, 'image_product', 'product_id', 'image_id');
     }
 
+    public function promotions()
+    {
+        return $this->belongsToMany(Promotion::class);
+    }
+
 }

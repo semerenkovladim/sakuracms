@@ -20,6 +20,10 @@
                             <b-menu-item label="Languages" tag="router-link" to="/admin/languages"></b-menu-item>
                             <b-menu-item label="Currencies" tag="router-link" to="/admin/currencies"></b-menu-item>
                         </b-menu-item>
+                        <b-menu-item icon="slideshow" label="Newsletter">
+                            <b-menu-item label="News" tag="router-link" to="/admin/newsletters"></b-menu-item>
+                            <b-menu-item label="Promotions" tag="router-link" to="/admin/promotions"></b-menu-item>
+                        </b-menu-item>
                     </b-menu-list>
                 </b-menu>
             </div>
