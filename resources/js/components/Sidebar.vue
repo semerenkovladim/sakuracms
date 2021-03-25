@@ -20,14 +20,6 @@
                             <b-menu-item label="Languages" tag="router-link" to="/admin/languages"></b-menu-item>
                             <b-menu-item label="Currencies" tag="router-link" to="/admin/currencies"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item icon="slideshow" label="Translation">
-                            <b-menu-item label="Products" tag="router-link" to="/admin/translation/products"></b-menu-item>
-                            <b-menu-item label="Categories" tag="router-link" to="/admin/translation/categories"></b-menu-item>
-                        </b-menu-item>
-                        <b-menu-item icon="slideshow" label="Import/Export">
-                            <b-menu-item label="Export" tag="router-link" to="/admin/export"></b-menu-item>
-                            <b-menu-item label="Import" tag="router-link" to="/admin/import"></b-menu-item>
-                        </b-menu-item>
                     </b-menu-list>
                 </b-menu>
             </div>

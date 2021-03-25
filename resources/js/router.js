@@ -15,6 +15,9 @@ import OrderUpdate from "./pages/OrderUpdate";
 import Languages from "./pages/Languages";
 import LanguageUpdate from "./pages/LanguageUpdate";
 import LanguageCreate from "./pages/LanguageCreate";
+import Currencies from "./pages/Currencies";
+import CurrencyUpdate from "./pages/CurrencyUpdate";
+import CurrencyCreate from "./pages/CurrencyCreate";
 
 Vue.use(VueRouter);
 
@@ -141,6 +144,36 @@ const router = new VueRouter({
             path: '/admin/language/create',
             name: 'languages.create',
             component: LanguageCreate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/currencies',
+            name: 'currencies',
+            component: Currencies,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/currency/create',
+            name: 'currencies.create',
+            component: CurrencyCreate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/currency/:id',
+            name: 'currencies.update',
+            component: CurrencyUpdate,
             meta: {
                 middleware: [
                     isAuth

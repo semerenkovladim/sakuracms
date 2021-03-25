@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLanguageIdToCategoryTranslationsTable extends Migration
+class CreateCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddLanguageIdToCategoryTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('category_translations', function (Blueprint $table) {
-            $table->foreignId('language_id')->nullable();
+        Schema::create('currencies', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->char('iso', 3);
+            $table->double('ratio');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddLanguageIdToCategoryTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('category_translations', function (Blueprint $table) {
-            $table->dropColumn(['language_id']);
-        });
+        Schema::dropIfExists('currencies');
     }
 }

@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoriesController;
+use App\Http\Controllers\API\CurrenciesController;
 use App\Http\Controllers\API\LanguagesController;
 use App\Http\Controllers\API\OrdersController;
 use App\Http\Controllers\API\OrderStatusesController;
 use App\Http\Controllers\API\ProductsController;
+use App\Http\Controllers\API\ProductTranslationsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,4 +52,10 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/languages', [LanguagesController::class, 'create']);
     Route::post('/languages/{id}', [LanguagesController::class, 'update']);
     Route::delete('/languages/{id}', [LanguagesController::class, 'delete']);
+
+    Route::get('/currencies', [CurrenciesController::class, 'index']);
+    Route::get('/currency/{id}', [CurrenciesController::class, 'show']);
+    Route::put('/currencies', [CurrenciesController::class, 'create']);
+    Route::post('/currencies/{id}', [CurrenciesController::class, 'update']);
+    Route::delete('/currencies/{id}', [CurrenciesController::class, 'delete']);
 });

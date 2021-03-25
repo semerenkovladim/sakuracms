@@ -117,7 +117,6 @@ class AuthController extends Controller
         $response = app()->handle($request);
         // Вытаскиваем данные из ответа
         $data = json_decode($response->getContent(), true);
-        return $data;
         // Формируем окончательный ответ в нужном формате
         return response()->json([
             'token' => $data['access_token'],
