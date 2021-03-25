@@ -11,33 +11,22 @@
                     <b-menu-list>
                         <b-menu-item icon="slideshow" label="Showcase">
                             <b-menu-item label="Products" tag="router-link" to="/admin/products"></b-menu-item>
-<!--                            <b-menu-item label="Tags" tag="router-link" to="/admin/tags"></b-menu-item>-->
-<!--                            <b-menu-item label="Attributes" tag="router-link" to="/admin/attributes"></b-menu-item>-->
                             <b-menu-item label="Categories" tag="router-link" to="/admin/categories"></b-menu-item>
                         </b-menu-item>
                         <b-menu-item icon="slideshow" label="Business">
                             <b-menu-item label="Orders" tag="router-link" to="/admin/orders"></b-menu-item>
-<!--                            <b-menu-item label="Messages" tag="router-link" to="/admin/messages"></b-menu-item>-->
-<!--                            <b-menu-item label="Reviews" tag="router-link" to="/admin/reviews"></b-menu-item>-->
-                        </b-menu-item>
-                        <b-menu-item icon="slideshow" label="Themes">
-                            <b-menu-item label="Themes" tag="router-link" to="/admin/themes"></b-menu-item>
-                            <b-menu-item label="Modules" tag="router-link" to="/admin/modules"></b-menu-item>
-                            <b-menu-item label="Hooks" tag="router-link" to="/admin/hooks"></b-menu-item>
                         </b-menu-item>
                         <b-menu-item icon="slideshow" label="Localization">
                             <b-menu-item label="Languages" tag="router-link" to="/admin/languages"></b-menu-item>
                             <b-menu-item label="Currencies" tag="router-link" to="/admin/currencies"></b-menu-item>
-                            <b-menu-item label="Translation" tag="router-link" to="/admin/translation"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item icon="slideshow" label="Users">
-                            <b-menu-item label="Users" tag="router-link" to="/admin/users"></b-menu-item>
-                            <b-menu-item label="Administrators" tag="router-link" to="/admin/admins"></b-menu-item>
+                        <b-menu-item icon="slideshow" label="Translation">
+                            <b-menu-item label="Products" tag="router-link" to="/admin/translation/products"></b-menu-item>
+                            <b-menu-item label="Categories" tag="router-link" to="/admin/translation/categories"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item icon="slideshow" label="Statistics">
-                            <b-menu-item label="Orders" tag="router-link" to="/admin/statistics/orders"></b-menu-item>
-                            <b-menu-item label="Devices" tag="router-link" to="/admin/statistics/devices"></b-menu-item>
-                            <b-menu-item label="Countries" tag="router-link" to="/admin/statistics/countries"></b-menu-item>
+                        <b-menu-item icon="slideshow" label="Import/Export">
+                            <b-menu-item label="Export" tag="router-link" to="/admin/export"></b-menu-item>
+                            <b-menu-item label="Import" tag="router-link" to="/admin/import"></b-menu-item>
                         </b-menu-item>
                     </b-menu-list>
                 </b-menu>

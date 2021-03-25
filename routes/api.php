@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoriesController;
+use App\Http\Controllers\API\LanguagesController;
 use App\Http\Controllers\API\OrdersController;
 use App\Http\Controllers\API\OrderStatusesController;
 use App\Http\Controllers\API\ProductsController;
@@ -43,4 +44,10 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/orders/{id}', [OrdersController::class, 'delete']);
     Route::get('/order/{id}', [OrdersController::class, 'one']);
     Route::post('/orders/{id}', [OrdersController::class, 'update']);
+
+    Route::get('/languages', [LanguagesController::class, 'index']);
+    Route::get('/language/{id}', [LanguagesController::class, 'show']);
+    Route::put('/languages', [LanguagesController::class, 'create']);
+    Route::post('/languages/{id}', [LanguagesController::class, 'update']);
+    Route::delete('/languages/{id}', [LanguagesController::class, 'delete']);
 });

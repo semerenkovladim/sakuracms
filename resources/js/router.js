@@ -12,6 +12,9 @@ import CategoryCreate from "./pages/CategoryCreate";
 import CategoryUpdate from "./pages/CategoryUpdate";
 import Orders from "./pages/Orders";
 import OrderUpdate from "./pages/OrderUpdate";
+import Languages from "./pages/Languages";
+import LanguageUpdate from "./pages/LanguageUpdate";
+import LanguageCreate from "./pages/LanguageCreate";
 
 Vue.use(VueRouter);
 
@@ -108,6 +111,36 @@ const router = new VueRouter({
             path: '/admin/orders/:id',
             name: 'orders.update',
             component: OrderUpdate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/languages',
+            name: 'languages',
+            component: Languages,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/languages/:id',
+            name: 'languages.update',
+            component: LanguageUpdate,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/language/create',
+            name: 'languages.create',
+            component: LanguageCreate,
             meta: {
                 middleware: [
                     isAuth
