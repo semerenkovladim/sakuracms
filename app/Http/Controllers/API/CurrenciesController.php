@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Currency\DeleteCurrencyRequest;
+use App\Http\Requests\Currency\StoreCurrencyRequest;
+use App\Http\Requests\Currency\UpdateCurrencyRequest;
 use App\Models\Currency;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,7 +28,9 @@ class CurrenciesController extends Controller
         ], 200);
     }
 
-    public function create(Request $request) {
+    public function create(StoreCurrencyRequest $request) {
+        $validate = $request->validated();
+
         $currency = new Currency();
         $currency->title = $request->title;
         $currency->iso = $request->iso;
@@ -38,7 +43,9 @@ class CurrenciesController extends Controller
         return response()->json([], 200);
     }
 
-    public function update($id, Request $request) {
+    public function update($id, UpdateCurrencyRequest $request) {
+        $validate = $request->validated();
+
         $currency = Currency::find($id);
         $currency->title = $request->title;
         $currency->iso = $request->iso;
@@ -49,7 +56,9 @@ class CurrenciesController extends Controller
         return response()->json([], 200);
     }
 
-    public function delete($id) {
+    public function delete($id, DeleteCurrencyRequest $request) {
+        $validate = $request->validated();
+
         $currency = Currency::find($id);
         $currency->delete();
 

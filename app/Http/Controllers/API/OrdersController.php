@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Order\DeleteOrderRequest;
+use App\Http\Requests\Order\UpdateOrderRequest;
 use App\Mail\FeedbackMail;
 use App\Models\Order;
 use App\Models\OrderStatus;
@@ -18,7 +20,9 @@ class OrdersController extends Controller
         ], 200);
     }
 
-    public function delete($id) {
+    public function delete($id, DeleteOrderRequest $request) {
+        $validate = $request->validated();
+
         $order = Order::find($id);
         $order->delete();
         return response()->json([], 200);
@@ -32,7 +36,9 @@ class OrdersController extends Controller
         ], 200);
     }
 
-    public function update($id, Request $request) {
+    public function update($id, UpdateOrderRequest $request) {
+        $validate = $request->validated();
+
         $order = Order::find($id);
         $order->status()->dissociate();
         $status = OrderStatus::find($request->status_id);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\File;
 use App\Models\Product;
@@ -26,7 +28,9 @@ class ProductsController extends Controller
         return response()->json([], 200);
     }
 
-    public function create(Request $request) {
+    public function create(StoreProductRequest $request) {
+        $validate = $request->validated();
+
         $product = new Product();
         $category = Category::find($request->category_id);
         $product->title = $request->title;
@@ -63,7 +67,9 @@ class ProductsController extends Controller
         ], 200);
     }
 
-    public function update($id, Request $request) {
+    public function update($id, UpdateProductRequest $request) {
+        $validate = $request->validated();
+
         $product = Product::find($id);
         $category = Category::find($request->category_id);
         $product->title = $request->title;

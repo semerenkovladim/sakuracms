@@ -20,27 +20,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdc89ca3-9b20-4df1-ad00-7811f703065e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/NewslettersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PromotionsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_194302_create_newsletter_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_194644_create_promotion_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_194943_create_promotion_product_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_195554_create_subscribers_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/Newsletter.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/NewsletterCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/DeleteCategoryRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/StoreCategoryRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/UpdateCategoryRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Currency/DeleteCurrencyRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Currency/StoreCurrencyRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Currency/UpdateCurrencyRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Language/DeleteLanguageRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Language/StoreLanguageRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Language/UpdateLanguageRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Newsletter/DeleteNewsletterRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Newsletter/StoreNewsletterRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Order/DeleteOrderRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Order/UpdateOrderRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Product/DeleteProductRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Product/StoreProductRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Product/UpdateProductRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Promotion/DeletePromotionRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Promotion/StorePromotionRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/CategoryPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/CurrencyPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/LanguagePolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/NewsletterPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/OrderPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/ProductPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/PromotionPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/CategoryFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/CountryFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/CurrencyFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FileFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ImageProductFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/LanguageFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/NewsletterFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/OrderFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/OrderProductFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ProductPromotionFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/PromotionFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Attribute.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Promotion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AttributeProduct.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AttributeValue.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CategoryTranslation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Newsletter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ProductTranslation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CurrenciesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CurrenciesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/LanguagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/LanguagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/NewslettersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/NewslettersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/OrdersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/PromotionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PromotionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Promotion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Promotion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_105838_create_attributes_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_105902_create_tags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_27_123339_create_product_promotion_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_105952_create_values_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_110021_create_attribute_value_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_110043_create_attribute_product_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_110106_create_product_tag_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_194943_create_promotion_product_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_195554_create_subscribers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UsersSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UsersSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/CategoryCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/CategoryCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/PromotionCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/PromotionCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +105,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -199,7 +251,9 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -229,7 +283,8 @@
       <workItem from="1616495874524" duration="13831000" />
       <workItem from="1616665523280" duration="5727000" />
       <workItem from="1616681299181" duration="5611000" />
-      <workItem from="1616700299162" duration="6180000" />
+      <workItem from="1616700299162" duration="6519000" />
+      <workItem from="1616845649875" duration="17040000" />
     </task>
     <servers />
   </component>
@@ -250,27 +305,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="550" y="43" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1616685445721">
-      <screen x="0" y="43" width="1536" height="821" />
-    </state>
-    <state x="550" y="43" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.43.1536.821@0.43.1536.821" timestamp="1616685445721" />
-    <state x="499" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616686710007">
-      <screen x="0" y="43" width="1536" height="821" />
-    </state>
-    <state x="499" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.43.1536.821@0.43.1536.821" timestamp="1616686710007" />
-    <state x="499" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616706697821">
-      <screen x="0" y="43" width="1536" height="821" />
-    </state>
-    <state x="499" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.43.1536.821@0.43.1536.821" timestamp="1616706697821" />
-    <state x="586" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616506371505">
-      <screen x="0" y="43" width="1536" height="821" />
-    </state>
-    <state x="586" y="368" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.43.1536.821@0.43.1536.821" timestamp="1616506371505" />
-    <state x="425" y="208" key="run.anything.popup" timestamp="1616685594654">
-      <screen x="0" y="43" width="1536" height="821" />
-    </state>
-    <state x="425" y="208" key="run.anything.popup/0.43.1536.821@0.43.1536.821" timestamp="1616685594654" />
   </component>
 </project>

@@ -57,15 +57,42 @@ export default {
                 title: this.title,
                 category_id: this.category_id
             }
-            api.request('post', '/api/categories?_method=put', payload).then((res) => {
-                this.$buefy.toast.open({
-                    message: 'Category added successful! You will be redirected to categories list',
-                    type: 'is-success'
-                });
-                setTimeout(() => {
-                    this.$router.push('/admin/categories');
-                }, 2000);
-            })
+            axios.post('/api/categories?_method=put', payload).then((res) => {
+                    this.$buefy.toast.open({
+                        message: 'Category added successful! You will be redirected to categories list',
+                        type: 'is-success'
+                    });
+                    setTimeout(() => {
+                        this.$router.push('/admin/categories');
+                    }, 2000);
+            }).catch((error) => {
+                if(error.response.status === 401) {
+                    const token = window.localStorage.getItem('token');
+                    const user = window.localStorage.getItem('user');
+                    const refresh_token = window.localStorage.getItem('refresh_token');
+                    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+                    const data = {
+                        refresh_token: refresh_token
+                    }
+                    axios.post('/api/login/refresh', data)
+                        .then((res) => {
+                            auth.login(res.data.token, res.data.refresh_token, res.data.user);
+                            this.create();
+                        })
+
+                }
+                if(error.response.status === 403) {
+                    this.$buefy.toast.open({
+                        message: error.response.data.message,
+                        type: 'is-danger'
+                    });
+                } else if(error.response.status === 422) {
+                    this.$buefy.toast.open({
+                        message: error.response.data.message,
+                        type: 'is-danger'
+                    });
+                }
+            });
         }
     },
     created() {

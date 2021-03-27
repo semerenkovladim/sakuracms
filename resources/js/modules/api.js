@@ -21,6 +21,8 @@ class API {
                         this.request(methods, url, payload);
                     })
 
+            } else {
+                return error;
             }
         });
     }

@@ -5,8 +5,8 @@
         <div class="columns">
             <div class="column">
                 <div class="buttons">
-                    <router-link to="newsletter/create" class="button is-primary">
-                        <strong>Create new newsletter</strong>
+                    <router-link to="promotions/create" class="button is-primary">
+                        <strong>Create new promotion</strong>
                     </router-link>
                 </div>
             </div>
@@ -28,14 +28,6 @@
 
             <b-table-column label="Products" v-slot="props">
                 <div v-for="product in props.row.products">
-                    <b-image
-                        :src="'/storage' + props.row.products.images[0].path"
-                        alt="A random image"
-                        ratio="6by4" v-if="props.row.products.images.length !== 0"></b-image>
-                    <b-image
-                        src="/storage/image/empty/no_image.jpg"
-                        alt="A random image"
-                        ratio="6by4" v-else></b-image>
                     <div>Title: {{ product.title }}</div>
                     <div>Price: {{ product.price }}</div>
                 </div>
@@ -60,14 +52,6 @@
             <b-table-column label="Delete" v-slot="props">
                 <b-button @click="deletePopup(props.row.id, props.row.title)">
                     <b-icon icon="delete"/>
-                </b-button>
-            </b-table-column>
-
-            <b-table-column label="Update" v-slot="props">
-                <b-button>
-                    <router-link :to="'/admin/newsletter/' + props.row.id">
-                        <b-icon icon="file-edit"/>
-                    </router-link>
                 </b-button>
             </b-table-column>
 

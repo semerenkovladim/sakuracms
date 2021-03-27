@@ -21,6 +21,7 @@ import CurrencyCreate from "./pages/CurrencyCreate";
 import Newsletter from "./pages/Newsletter";
 import NewsletterCreate from "./pages/NewsletterCreate";
 import Promotions from "./pages/Promotions";
+import PromotionCreate from "./pages/PromotionCreate";
 
 Vue.use(VueRouter);
 
@@ -207,6 +208,16 @@ const router = new VueRouter({
             path: '/admin/promotions',
             name: 'promotions',
             component: Promotions,
+            meta: {
+                middleware: [
+                    isAuth
+                ]
+            }
+        },
+        {
+            path: '/admin/promotions/create',
+            name: 'promotions.create',
+            component: PromotionCreate,
             meta: {
                 middleware: [
                     isAuth

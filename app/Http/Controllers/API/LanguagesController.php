@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Language\DeleteLanguageRequest;
+use App\Http\Requests\Language\StoreLanguageRequest;
+use App\Http\Requests\Language\UpdateLanguageRequest;
 use App\Models\Language;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,7 +28,9 @@ class LanguagesController extends Controller
         ], 200);
     }
 
-    public function create(Request $request) {
+    public function create(StoreLanguageRequest $request) {
+        $validate = $request->validated();
+
         $language = new Language();
         $language->title = $request->title;
         $language->iso = $request->iso;
@@ -37,7 +42,9 @@ class LanguagesController extends Controller
 
     }
 
-    public function update($id, Request $request) {
+    public function update($id, UpdateLanguageRequest $request) {
+        $validate = $request->validated();
+
         $language = Language::find($id);
         $language->title = $request->title;
         $language->iso = $request->iso;
@@ -47,7 +54,9 @@ class LanguagesController extends Controller
         return response()->json([], 200);
     }
 
-    public function delete($id) {
+    public function delete($id, DeleteLanguageRequest $request) {
+        $validate = $request->validated();
+
         $language = Language::find($id);
         $language->delete();
 

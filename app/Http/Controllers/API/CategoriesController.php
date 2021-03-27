@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\DeleteCategoryRequest;
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,7 +27,9 @@ class CategoriesController extends Controller
         ], 200);
     }
 
-    public function create(Request $request) {
+    public function create(StoreCategoryRequest $request) {
+        $validate = $request->validated();
+
         $category = new Category();
         $category->title = $request->title;
         if($request->category_id) {
@@ -37,7 +42,9 @@ class CategoriesController extends Controller
         return response()->json([], 200);
     }
 
-    public function update($id, Request $request) {
+    public function update($id, UpdateCategoryRequest $request) {
+        $validate = $request->validated();
+
         $category = Category::find($id);
         $category->title = $request->title;
         $parentCategory = Category::find($request->category_id);
@@ -48,7 +55,9 @@ class CategoriesController extends Controller
 
         return response()->json([], 200);
     }
-    public function delete($id) {
+    public function delete($id, DeleteCategoryRequest $request) {
+        $validate = $request->validated();
+
         $category  = Category::find($id);
         $category->delete();
         return response()->json([], 200);

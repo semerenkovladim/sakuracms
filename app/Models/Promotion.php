@@ -9,8 +9,8 @@ class Promotion extends Model
 {
     use HasFactory;
 
-    public function products()
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }
