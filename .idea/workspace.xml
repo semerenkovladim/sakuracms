@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdc89ca3-9b20-4df1-ad00-7811f703065e" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Resources/CountryResource.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Http/Resources/CurrencyResource.php" afterDir="false" />
@@ -88,6 +89,9 @@
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> 0239cba87cf3f47a0a345658804803559ee1995a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,8 +295,12 @@
       <workItem from="1616665523280" duration="5727000" />
       <workItem from="1616681299181" duration="5611000" />
       <workItem from="1616700299162" duration="6519000" />
+<<<<<<< HEAD
       <workItem from="1616845649875" duration="17040000" />
       <workItem from="1617269927735" duration="15938000" />
+=======
+      <workItem from="1616845649875" duration="18268000" />
+>>>>>>> 0239cba87cf3f47a0a345658804803559ee1995a
     </task>
     <servers />
   </component>
