@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\File;
 use App\Models\Product;
@@ -14,16 +15,16 @@ use function str_slug;
 
 class ProductsController extends Controller
 {
-    public function all() {
-        $products = Product::with(['category', 'images'])->get();
+    public function index() {
+        return ProductResource::collection(Product::with(['category', 'images'])->paginate(15));
+    }
 
-        return response()->json([
-            $products
-        ], 200);
+    public function allWithoutPagination() {
+        return ProductResource::collection(Product::all());
     }
 
     public function delete($id) {
-        $product  = Product::find($id);
+        $product = Product::find($id);
         $product->delete();
         return response()->json([], 200);
     }
@@ -59,12 +60,8 @@ class ProductsController extends Controller
         ], 200);
     }
 
-    public function one($id) {
-        $products = Product::with(['category', 'images'])->get();
-        $product = $products->find($id);
-        return response()->json([
-            $product
-        ], 200);
+    public function show($id) {
+        return new ProductResource(Product::with(['category', 'images'])->find($id));
     }
 
     public function update($id, UpdateProductRequest $request) {

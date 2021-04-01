@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Newsletter\DeleteNewsletterRequest;
 use App\Http\Requests\Newsletter\StoreNewsletterRequest;
 use App\Http\Requests\Newsletter\UpdateNewsletterRequest;
+use App\Http\Resources\NewsletterResource;
 use App\Models\Newsletter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,11 +14,11 @@ use Illuminate\Http\Request;
 class NewslettersController extends Controller
 {
     public function index() {
-        $newsletters = Newsletter::all();
+        return NewsletterResource::collection(Newsletter::paginate(15));
+    }
 
-        return response()->json([
-            $newsletters
-        ], 200);
+    public function allWithoutPagination() {
+        return NewsletterResource::collection(Newsletter::all());
     }
 
     public function create(StoreNewsletterRequest $request) {

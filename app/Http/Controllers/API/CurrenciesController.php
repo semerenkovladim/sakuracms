@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Currency\DeleteCurrencyRequest;
 use App\Http\Requests\Currency\StoreCurrencyRequest;
 use App\Http\Requests\Currency\UpdateCurrencyRequest;
+use App\Http\Resources\CurrencyResource;
 use App\Models\Currency;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,19 +14,15 @@ use Illuminate\Http\Request;
 class CurrenciesController extends Controller
 {
     public function index() {
-        $currencies = Currency::all();
+        return CurrencyResource::collection(Currency::paginate(15));
+    }
 
-        return response()->json([
-            $currencies
-        ], 200);
+    public function allWithoutPagination() {
+        return CurrencyResource::collection(Currency::all());
     }
 
     public function show($id) {
-        $currency = Currency::find($id);
-
-        return response()->json([
-            $currency
-        ], 200);
+        return new CurrencyResource(Currency::find($id));
     }
 
     public function create(StoreCurrencyRequest $request) {

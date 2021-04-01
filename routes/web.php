@@ -15,3 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->get('/{any}', function () {
     return view('admin.app');
 })->where('any', '.*');
+
+Route::get('test', function() {
+    $categories =  \App\Http\Resources\CategoryResource::collection(\App\Models\Category::with(['category','products'])->get());
+   dd($categories);
+});

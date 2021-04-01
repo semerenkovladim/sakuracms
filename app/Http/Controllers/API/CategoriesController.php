@@ -6,25 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\DeleteCategoryRequest;
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    public function all() {
-        $categories = Category::with(['category', 'products'])->get();
-        return response()->json([
-            $categories
-        ], 200);
+    public function index() {
+        return CategoryResource::collection(Category::with(['category', 'products'])->paginate(15));
+    }
+
+    public function allWithoutPagination() {
+        return CategoryResource::collection(Category::all());
     }
 
     public function one($id) {
-        $categories = Category::with(['category'])->get();
-        $category = $categories->find($id);
-        return response()->json([
-            $category
-        ], 200);
+        return new CategoryResource(Category::with(['category'])->find($id));
     }
 
     public function create(StoreCategoryRequest $request) {

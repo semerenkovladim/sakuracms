@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Language\DeleteLanguageRequest;
 use App\Http\Requests\Language\StoreLanguageRequest;
 use App\Http\Requests\Language\UpdateLanguageRequest;
+use App\Http\Resources\LanguageResource;
 use App\Models\Language;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,19 +14,15 @@ use Illuminate\Http\Request;
 class LanguagesController extends Controller
 {
     public function index() {
-        $languages = Language::all();
+        return LanguageResource::collection(Language::paginate(15));
+    }
 
-        return response()->json([
-            $languages
-        ], 200);
+    public function allWithoutPagination() {
+        return LanguageResource::collection(Language::all());
     }
 
     public function show($id) {
-        $language = Language::find($id);
-
-        return response()->json([
-            $language
-        ], 200);
+        return new LanguageResource(Language::find($id));
     }
 
     public function create(StoreLanguageRequest $request) {

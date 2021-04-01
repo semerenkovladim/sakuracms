@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\DeleteOrderRequest;
 use App\Http\Requests\Order\UpdateOrderRequest;
+use App\Http\Resources\OrderResource;
 use App\Mail\FeedbackMail;
 use App\Models\Order;
 use App\Models\OrderStatus;
@@ -13,11 +14,8 @@ use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
-    public function all() {
-        $orders = Order::with(['user', 'status', 'products'])->get();
-        return response()->json([
-            $orders
-        ], 200);
+    public function index() {
+        return OrderResource::collection(Order::with(['user', 'status', 'products'])->paginate(15));
     }
 
     public function delete($id, DeleteOrderRequest $request) {
@@ -28,12 +26,8 @@ class OrdersController extends Controller
         return response()->json([], 200);
     }
 
-    public function one($id) {
-        $orders = Order::with(['status'])->get();
-        $order = $orders->find($id);
-        return response()->json([
-            $order
-        ], 200);
+    public function show($id) {
+        return new OrderResource(Order::with(['user', 'status', 'products'])->find($id));
     }
 
     public function update($id, UpdateOrderRequest $request) {

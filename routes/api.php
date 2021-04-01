@@ -28,40 +28,45 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/login/refresh', [AuthController::class, 'refresh']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/logout', [AuthController::class, 'logout']);
 
-    Route::get('/order-statuses', [OrderStatusesController::class, 'all']);
+    Route::get('/order-statuses', [OrderStatusesController::class, 'index']);
 
-    Route::get('/products', [ProductsController::class, 'all']);
-    Route::get('/product/{id}', [ProductsController::class, 'one']);
+    Route::get('/products', [ProductsController::class, 'index']);
+    Route::get('/products-all', [ProductsController::class, 'index']);
+    Route::get('/product/{id}', [ProductsController::class, 'show']);
     Route::put('/products', [ProductsController::class, 'create']);
     Route::post('/products/{id}', [ProductsController::class, 'update']);
     Route::delete('/products/{id}', [ProductsController::class, 'delete']);
 
-    Route::get('/categories', [CategoriesController::class, 'all']);
+    Route::get('/categories', [CategoriesController::class, 'index']);
+    Route::get('/categories-all', [CategoriesController::class, 'allWithoutPagination']);
     Route::put('/categories', [CategoriesController::class, 'create']);
     Route::get('/category/{id}', [CategoriesController::class, 'one']);
     Route::post('/categories/{id}', [CategoriesController::class, 'update']);
     Route::delete('/categories/{id}', [CategoriesController::class, 'delete']);
 
-    Route::get('/orders', [OrdersController::class, 'all']);
+    Route::get('/orders', [OrdersController::class, 'index']);
     Route::delete('/orders/{id}', [OrdersController::class, 'delete']);
-    Route::get('/order/{id}', [OrdersController::class, 'one']);
+    Route::get('/order/{id}', [OrdersController::class, 'show']);
     Route::post('/orders/{id}', [OrdersController::class, 'update']);
 
     Route::get('/languages', [LanguagesController::class, 'index']);
+    Route::get('/languages-all', [LanguagesController::class, 'allWithoutPagination']);
     Route::get('/language/{id}', [LanguagesController::class, 'show']);
     Route::put('/languages', [LanguagesController::class, 'create']);
     Route::post('/languages/{id}', [LanguagesController::class, 'update']);
     Route::delete('/languages/{id}', [LanguagesController::class, 'delete']);
 
     Route::get('/currencies', [CurrenciesController::class, 'index']);
+    Route::get('/currencies-all', [CurrenciesController::class, 'allWithoutPagination']);
     Route::get('/currency/{id}', [CurrenciesController::class, 'show']);
     Route::put('/currencies', [CurrenciesController::class, 'create']);
     Route::post('/currencies/{id}', [CurrenciesController::class, 'update']);
     Route::delete('/currencies/{id}', [CurrenciesController::class, 'delete']);
 
     Route::get('/newsletters', [NewslettersController::class, 'index']);
+    Route::get('/newsletters-all', [NewslettersController::class, 'allWithoutPagination']);
     Route::get('/newsletter/{id}', [NewslettersController::class, 'show']);
     Route::put('/newsletters', [NewslettersController::class, 'create']);
     Route::post('/newsletters/{id}', [NewslettersController::class, 'update']);

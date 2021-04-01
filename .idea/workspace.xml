@@ -20,71 +20,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdc89ca3-9b20-4df1-ad00-7811f703065e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/DeleteCategoryRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/StoreCategoryRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/UpdateCategoryRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Currency/DeleteCurrencyRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Currency/StoreCurrencyRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Currency/UpdateCurrencyRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Language/DeleteLanguageRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Language/StoreLanguageRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Language/UpdateLanguageRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Newsletter/DeleteNewsletterRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Newsletter/StoreNewsletterRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Order/DeleteOrderRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Order/UpdateOrderRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Product/DeleteProductRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Product/StoreProductRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Product/UpdateProductRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Promotion/DeletePromotionRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Promotion/StorePromotionRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/CategoryPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/CurrencyPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/LanguagePolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/NewsletterPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/OrderPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/ProductPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Policies/PromotionPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CategoryFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CountryFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CurrencyFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/FileFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ImageProductFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/LanguageFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/NewsletterFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/OrderFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/OrderProductFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ProductPromotionFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/PromotionFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CountryResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CurrencyResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/FileResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/LanguageResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/NewsletterResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/OrderResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/OrderStatusResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/ProductResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/PromotionResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/RoleResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/UserResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/admin/js/pages/Categories/Categories.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/admin/js/pages/Products/Products.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CategoriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CurrenciesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CurrenciesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/LanguagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/LanguagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/NewslettersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/NewslettersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/OrderStatusesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/OrderStatusesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/OrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ProductsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/PromotionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PromotionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Promotion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Promotion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_105838_create_attributes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_105902_create_tags_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_27_123339_create_product_promotion_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_105952_create_values_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_110021_create_attribute_value_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_110043_create_attribute_product_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_20_110106_create_product_tag_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_194943_create_promotion_product_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_195554_create_subscribers_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UsersSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UsersSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modules/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modules/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/CategoryCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/CategoryCreate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/PromotionCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/PromotionCreate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/components/ExampleComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/components/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/layouts/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/layouts/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/middleware/isAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/middleware/isAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/middleware/middlewarePipeline.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/middleware/middlewarePipeline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modules/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/modules/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Categories.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/CategoryCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Categories/CategoryCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/CategoryUpdate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Categories/CategoryUpdate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Currencies.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Currencies/Currencies.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/CurrencyCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Currencies/CurrencyCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/CurrencyUpdate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Currencies/CurrencyUpdate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/LanguageCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Languages/LanguageCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/LanguageUpdate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Languages/LanguageUpdate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Languages.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Languages/Languages.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Newsletter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Newsletters/Newsletter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/NewsletterCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Newsletters/NewsletterCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/OrderUpdate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Orders/OrderUpdate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Orders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Orders/Orders.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/ProductCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Products/ProductCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/ProductUpdate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Products/ProductUpdate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Products.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/PromotionCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Promotions/PromotionCreate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Promotions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/pages/Promotions/Promotions.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/js/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/sass/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/admin/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +262,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Backend\Laravel\sakuracms.test\Laravel\resources\js\middleware" />
+      <recent name="D:\Backend\Laravel\sakuracms.test\Laravel\resources\admin" />
+      <recent name="D:\Backend\Laravel\sakuracms.test\Laravel\resources\js\pages\Orders" />
+      <recent name="D:\Backend\Laravel\sakuracms.test\Laravel\resources\js\pages\Promotions" />
+      <recent name="D:\Backend\Laravel\sakuracms.test\Laravel\resources\js\pages\Newsletters" />
+      <recent name="D:\Backend\Laravel\sakuracms.test\Laravel\resources\js\pages\Languages" />
     </key>
   </component>
   <component name="RunManager">
@@ -285,6 +292,7 @@
       <workItem from="1616681299181" duration="5611000" />
       <workItem from="1616700299162" duration="6519000" />
       <workItem from="1616845649875" duration="17040000" />
+      <workItem from="1617269927735" duration="15938000" />
     </task>
     <servers />
   </component>

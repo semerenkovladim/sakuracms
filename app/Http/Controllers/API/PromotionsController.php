@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Promotion\DeletePromotionRequest;
 use App\Http\Requests\Promotion\StorePromotionRequest;
+use App\Http\Resources\PromotionResource;
 use App\Models\Promotion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,11 +13,7 @@ use Illuminate\Http\Request;
 class PromotionsController extends Controller
 {
     public function index() {
-        $promotions = Promotion::with('products')->get();
-
-        return response()->json([
-            $promotions
-        ], 200);
+        return PromotionResource::collection(Promotion::with('products')->get());
     }
 
     public function create(StorePromotionRequest $request) {
