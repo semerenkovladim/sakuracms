@@ -6,7 +6,7 @@
             <div class="column">
                 <div class="buttons">
                     <router-link to="products/create" class="button is-primary">
-                        <strong>Create new product</strong>
+                        <strong>{{ $t('products.createProduct') }}</strong>
                     </router-link>
                 </div>
             </div>
@@ -14,11 +14,11 @@
         <b-table
             :data="data.data">
 
-            <b-table-column field="id" label="ID" width="40" numeric v-slot="props">
+            <b-table-column field="id" :label="$t('products.id')" width="40" numeric v-slot="props">
                 {{ props.row.id }}
             </b-table-column>
 
-            <b-table-column label="Images" v-slot="props">
+            <b-table-column :label="$t('products.images')" v-slot="props">
                 <b-image
                     :src="'/storage' + props.row.images[0].path"
                     alt="A random image"
@@ -29,11 +29,11 @@
                     ratio="6by4" v-else></b-image>
             </b-table-column>
 
-            <b-table-column field="title" label="Title" v-slot="props">
+            <b-table-column field="title" :label="$t('products.title')" v-slot="props">
                 {{ props.row.title }}
             </b-table-column>
 
-            <b-table-column field="description" label="Description" v-slot="props">
+            <b-table-column field="description" :label="$t('products.description')" v-slot="props">
                 <template v-if="props.row.description.length > 255">
                     {{ props.row.description.slice(0, 255) }}
                     <b-collapse :open="false" position="is-bottom" aria-id="contentIdForA11y1">
@@ -51,43 +51,43 @@
                 </template>
             </b-table-column>
 
-            <b-table-column field="short_description" label="Short Description" v-slot="props">
+            <b-table-column field="short_description" :label="$t('products.shortDescription')" v-slot="props">
                 {{ props.row.short_description }}
             </b-table-column>
 
-            <b-table-column field="meta_tags" label="Meta Tags" v-slot="props">
+            <b-table-column field="meta_tags" :label="$t('products.metaTags')" v-slot="props">
                 {{ props.row.meta_tags }}
             </b-table-column>
 
-            <b-table-column field="meta_description" label="Meta Description" v-slot="props">
+            <b-table-column field="meta_description" :label="$t('products.metaDescription')" v-slot="props">
                 {{ props.row.meta_description }}
             </b-table-column>
 
-            <b-table-column field="meta_title" label="Meta Title" v-slot="props">
+            <b-table-column field="meta_title" :label="$t('products.metaTitle')" v-slot="props">
                 {{ props.row.meta_title }}
             </b-table-column>
 
-            <b-table-column field="category" label="Category" v-slot="props">
+            <b-table-column field="category" :label="$t('products.category')" v-slot="props">
                 {{ props.row.category.title }}
             </b-table-column>
 
-            <b-table-column field="price" label="Price" v-slot="props">
+            <b-table-column field="price" :label="$t('products.price')" v-slot="props">
                 {{ props.row.price }}
             </b-table-column>
 
-            <b-table-column field="date" label="Date" centered v-slot="props">
+            <b-table-column field="date" :label="$t('products.date')" centered v-slot="props">
                     <span class="tag is-success">
                         {{ new Date(props.row.created_at).toLocaleDateString() }}
                     </span>
             </b-table-column>
 
-            <b-table-column label="Delete" v-slot="props">
+            <b-table-column :label="$t('products.delete')" v-slot="props">
                 <b-button @click="deletePopup(props.row.id, props.row.title)">
                     <b-icon icon="delete"/>
                 </b-button>
             </b-table-column>
 
-            <b-table-column label="Update" v-slot="props">
+            <b-table-column :label="$t('products.update')" v-slot="props">
                 <b-button>
                     <router-link :to="'/admin/products/' + props.row.id">
                         <b-icon icon="file-edit"/>

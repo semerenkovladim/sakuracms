@@ -4,56 +4,56 @@
         <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
             <div class="column is-12-mobile is-12">
                 <form class="is-flex is-flex-wrap-wrap">
-                    <b-field class="column is-12-mobile is-4" label="Product title*">
-                        <b-input placeholder="Product title"
+                    <b-field class="column is-12-mobile is-4" :label="$t('products.title')">
+                        <b-input :placeholder="$t('products.title')"
                                  v-model="product.title"
                                  type="text"
                                  required
                                  maxlength="255">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-4" label="Product price*">
-                        <b-input placeholder="Product price"
+                    <b-field class="column is-12-mobile is-4" :label="$t('products.price')">
+                        <b-input :placeholder="$t('products.price')"
                                  v-model="product.price"
                                  type="number"
                                  required>
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-4" label="Product meta-tags">
+                    <b-field class="column is-12-mobile is-4" :label="$t('products.metaTags')">
                         <b-taginput
                             maxlength="10"
-                            placeholder="Product meta tags"
+                            :placeholder="$t('products.metaTags')"
                             v-model="product.meta_tags">
                         </b-taginput>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Product description*">
+                    <b-field class="column is-12-mobile is-6" :label="$t('products.description')">
                         <b-input type="textarea"
                                  maxlength="3000"
                                  required
-                                 placeholder="Product description" v-model="product.description">
+                                 :placeholder="$t('products.description')" v-model="product.description">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Product short description*">
+                    <b-field class="column is-12-mobile is-6" :label="$t('products.shortDescription')">
                         <b-input type="textarea"
                                  maxlength="255"
-                                 placeholder="Product short description" v-model="product.short_description"
+                                 :placeholder="$t('products.shortDescription')" v-model="product.short_description"
                                  required>
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-4" label="Product meta description">
+                    <b-field class="column is-12-mobile is-4" :label="$t('products.metaDescription')">
                         <b-input type="textarea"
                                  maxlength="255"
-                                 placeholder="Product meta description" v-model="product.meta_description">
+                                 :placeholder="$t('products.metaDescription')" v-model="product.meta_description">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-4" label="Product meta title">
+                    <b-field class="column is-12-mobile is-4" :label="$t('products.metaTitle')">
                         <b-input type="textarea"
                                  maxlength="255"
-                                 placeholder="Product meta title" v-model="product.meta_title">
+                                 :placeholder="$t('products.metaTitle')" v-model="product.meta_title">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-4" label="Product category*">
-                        <b-select placeholder="Select a category" v-model="product.category_id">
+                    <b-field class="column is-12-mobile is-4" :label="$t('products.category')">
+                        <b-select :placeholder="$t('products.category')" v-model="product.category_id">
                             <option
                                 v-for="option in data"
                                 :value="option.id"
@@ -62,7 +62,7 @@
                             </option>
                         </b-select>
                     </b-field>
-                    <b-field class="column is-12-mobile is-12" label="Product images*">
+                    <b-field class="column is-12-mobile is-12" :label="$t('products.images')">
                         <b-upload v-model="product.images"
                                   multiple
                                   drag-drop required expanded>
@@ -96,7 +96,12 @@
                         </div>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="update" v-if="!disableBtn">Create</b-button>
+                        <b-button type="is-primary"
+                                  expanded
+                                  @click="update"
+                                  v-if="!disableBtn">
+                            {{ $t('products.update') }}
+                        </b-button>
                     </b-field>
                 </form>
                 <b-notification
@@ -150,7 +155,7 @@ export default {
         update() {
             const images = this.product.images.filter(file => file.type.slice(0, file.type.lastIndexOf('/')) === 'image')
             if(images.length === 0) {
-                this.errorMsg = 'Your files aren\'t image. Please choose at least one image';
+                this.errorMsg = this.$t('products.errorMsg');
                 this.showError = true;
                 this.productImages = [];
                 return false;
@@ -176,7 +181,7 @@ export default {
             api.request('post',`/api/products/${this.id}`, form,'multipart/form-data')
                 .then((response) => {
                     this.$buefy.toast.open({
-                        message: 'Product update successful! You will be redirected to products list',
+                        message: this.$t('products.successful',['update']),
                         type: 'is-success'
                     });
                     setTimeout(() => {
