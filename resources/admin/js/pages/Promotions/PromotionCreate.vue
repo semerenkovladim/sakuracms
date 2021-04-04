@@ -4,16 +4,16 @@
         <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
             <div class="column is-12-mobile is-12">
                 <form class="is-flex is-flex-wrap-wrap">
-                    <b-field class="column is-12-mobile is-6" label="Promotion title*">
-                        <b-input placeholder="Promotion title"
+                    <b-field class="column is-12-mobile is-6" :label="$t('promotions.title')">
+                        <b-input :placeholder="$t('promotions.title')"
                                  v-model="title"
                                  type="text"
                                  required
                                  maxlength="255">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Promotion before products*">
-                        <b-input placeholder="Promotion before products"
+                    <b-field class="column is-12-mobile is-6" :label="$t('promotions.beforeProducts')">
+                        <b-input :placeholder="$t('promotions.beforeProducts')"
                                  v-model="before_product"
                                  type="textarea"
                                  required
@@ -21,8 +21,8 @@
                         </b-input>
                     </b-field>
 
-                    <b-field class="column is-12-mobile is-6" label="Promotion after products*">
-                        <b-input placeholder="Promotion after products"
+                    <b-field class="column is-12-mobile is-6" :label="$t('promotions.afterProducts')">
+                        <b-input :placeholder="$t('promotions.afterProducts')"
                                  v-model="after_product"
                                  type="textarea"
                                  required
@@ -30,7 +30,7 @@
                         </b-input>
                     </b-field>
 
-                    <b-field class="column is-12-mobile is-6" label="Promotion products*">
+                    <b-field class="column is-12-mobile is-6" :label="$t('promotions.products')">
                         <b-dropdown
                             append-to-body
                             aria-role="menu"
@@ -60,7 +60,7 @@
                             </b-dropdown-item>
                         </b-dropdown>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Promotion send*">
+                    <b-field class="column is-12-mobile is-6" :label="$t('promotions.sendingAt')">
                         <b-datetimepicker
                             v-model="sending_at"
                             placeholder="Click to select..."
@@ -69,7 +69,7 @@
                         </b-datetimepicker>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">Create</b-button>
+                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">{{ $t('promotions.create') }}</b-button>
                     </b-field>
                 </form>
             </div>

@@ -23,7 +23,7 @@ const sidebar = {
     export: 'Экспорт',
     statistics: 'Статистика',
     additional: 'Дополнительно',
-    currentLanguage: 'Язык панели',
+    currentLanguage: 'Язык панели администратора',
     visitShop: 'Посетить магазин',
     logout: 'Выйти',
 }

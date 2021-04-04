@@ -4,31 +4,31 @@
         <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
             <div class="column is-12-mobile is-12">
                 <form class="is-flex is-flex-wrap-wrap">
-                    <b-field class="column is-12-mobile is-6" label="Currency title*">
-                        <b-input placeholder="Currency title"
+                    <b-field class="column is-12-mobile is-6" :label="$t('currencies.title')">
+                        <b-input :placeholder="$t('currencies.title')"
                                  v-model="title"
                                  type="text"
                                  required
                                  maxlength="255">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Currency ISO*">
-                        <b-input placeholder="Currency ISO"
+                    <b-field class="column is-12-mobile is-6" :label="$t('currencies.iso')">
+                        <b-input :placeholder="$t('currencies.iso')"
                                  v-model="iso"
                                  type="text"
                                  required
                                  maxlength="3">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Currency ratio*">
-                        <b-input placeholder="Currency ratio"
+                    <b-field class="column is-12-mobile is-6" :label="$t('currencies.ratio')">
+                        <b-input :placeholder="$t('currencies.ratio')"
                                  v-model="ratio"
                                  type="number"
                                  required>
                         </b-input>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">Create</b-button>
+                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">{{ $t('currencies.create') }}</b-button>
                     </b-field>
                 </form>
             </div>

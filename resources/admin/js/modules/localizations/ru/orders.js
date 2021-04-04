@@ -1,8 +1,8 @@
 const orders = {
-    userEmail: 'Электронная почта пользователя',
-    userFullname: 'Полное имя пользователя',
-    products: 'Продукты',
-    total: 'Итого',
+    userEmail: 'Электронная почта',
+    userFullname: 'Полное имя',
+    products: 'Товары',
+    total: 'Всего',
     status: 'Статус',
     date: 'Дата',
     delete: 'Удалить',

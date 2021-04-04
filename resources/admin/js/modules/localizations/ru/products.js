@@ -1,7 +1,7 @@
 const products = {
     createProduct: 'Создать новый продукт',
     id: 'ID',
-    images: 'Изображения',
+    images: 'Картинка',
     title: 'Заголовок',
     description: 'Описание',
     shortDescription: 'Краткое описание',
@@ -15,7 +15,7 @@ const products = {
     update: 'Обновить',
     create: 'Создать',
     errorMsg: 'Ваши файлы не являются изображениями. Выберите хотя бы одно изображение',
-    successful: 'Продукт {type} успешено! Вы будете перенаправлены в список продуктов'
+    successful: 'Продукт {type} успешно! Вы будете перенаправлены в список продуктов'
 }
 
 export default products;

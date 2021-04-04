@@ -6,7 +6,7 @@
             <div class="column">
                 <div class="buttons">
                     <router-link to="currency/create" class="button is-primary">
-                        <strong>Create new currency</strong>
+                        <strong>{{ $t('currencies.createCurrency') }}</strong>
                     </router-link>
                 </div>
             </div>
@@ -18,25 +18,25 @@
                 {{ props.row.id }}
             </b-table-column>
 
-            <b-table-column field="title" label="Title" v-slot="props">
+            <b-table-column field="title" :label="$t('currencies.title')" v-slot="props">
                 {{ props.row.title }}
             </b-table-column>
 
-            <b-table-column field="iso" label="ISO" v-slot="props">
+            <b-table-column field="iso" :label="$t('currencies.iso')" v-slot="props">
                 {{ props.row.iso }}
             </b-table-column>
 
-            <b-table-column field="ratio" label="Ratio" v-slot="props">
+            <b-table-column field="ratio" :label="$t('currencies.ratio')" v-slot="props">
                 {{ props.row.ratio }}
             </b-table-column>
 
-            <b-table-column label="Delete" v-slot="props">
+            <b-table-column :label="$t('currencies.delete')" v-slot="props">
                 <b-button @click="deletePopup(props.row.id, props.row.title)">
                     <b-icon icon="delete"/>
                 </b-button>
             </b-table-column>
 
-            <b-table-column label="Update" v-slot="props">
+            <b-table-column :label="$t('currencies.update')" v-slot="props">
                 <b-button>
                     <router-link :to="'/admin/currency/' + props.row.id">
                         <b-icon icon="file-edit"/>
