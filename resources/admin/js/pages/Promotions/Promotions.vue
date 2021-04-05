@@ -6,7 +6,7 @@
             <div class="column">
                 <div class="buttons">
                     <router-link to="promotions/create" class="button is-primary">
-                        <strong>Create new promotion</strong>
+                        <strong>{{ $t('promotions.createPromotion') }}</strong>
                     </router-link>
                 </div>
             </div>
@@ -18,38 +18,38 @@
                 {{ props.row.id }}
             </b-table-column>
 
-            <b-table-column field="title" label="Title" v-slot="props">
+            <b-table-column field="title" :label="$t('promotions.title')" v-slot="props">
                 {{ props.row.title }}
             </b-table-column>
 
-            <b-table-column field="category" label="Before products" v-slot="props">
+            <b-table-column field="category" :label="$t('promotions.beforeProducts')" v-slot="props">
                 {{ props.row.before_product }}
             </b-table-column>
 
-            <b-table-column label="Products" v-slot="props">
-                <div v-for="product in props.row.products">
+            <b-table-column :label="$t('promotions.products')" v-slot="props">
+                <div v-for="product in props.row.products" :key="product.id">
                     <div>Title: {{ product.title }}</div>
                     <div>Price: {{ product.price }}</div>
                 </div>
             </b-table-column>
 
-            <b-table-column field="category" label="After products" v-slot="props">
+            <b-table-column field="category" :label="$t('promotions.afterProducts')" v-slot="props">
                 {{ props.row.after_product }}
             </b-table-column>
 
-            <b-table-column field="date" label="Sending at" centered v-slot="props">
+            <b-table-column field="date" :label="$t('promotions.sendingAt')" centered v-slot="props">
                 <span class="tag is-success">
                     {{ new Date(props.row.sending_at).toLocaleDateString() }}
                 </span>
             </b-table-column>
 
-            <b-table-column field="date" label="Create at" centered v-slot="props">
+            <b-table-column field="date" :label="$t('promotions.createAt')" centered v-slot="props">
                 <span class="tag is-success">
                     {{ new Date(props.row.created_at).toLocaleDateString() }}
                 </span>
             </b-table-column>
 
-            <b-table-column label="Delete" v-slot="props">
+            <b-table-column :label="$t('promotions.delete')" v-slot="props">
                 <b-button @click="deletePopup(props.row.id, props.row.title)">
                     <b-icon icon="delete"/>
                 </b-button>

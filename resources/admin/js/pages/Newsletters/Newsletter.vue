@@ -6,7 +6,7 @@
             <div class="column">
                 <div class="buttons">
                     <router-link to="newsletter/create" class="button is-primary">
-                        <strong>Create new newsletter</strong>
+                        <strong>{{ $t('newsletters.createNewsletter') }}</strong>
                     </router-link>
                 </div>
             </div>
@@ -18,27 +18,27 @@
                 {{ props.row.id }}
             </b-table-column>
 
-            <b-table-column field="title" label="Title" v-slot="props">
+            <b-table-column field="title" :label="$t('newsletters.title')" v-slot="props">
                 {{ props.row.title }}
             </b-table-column>
 
-            <b-table-column field="category" label="Body" v-slot="props">
+            <b-table-column field="body" :label="$t('newsletters.body')" v-slot="props">
                 {{ props.row.body }}
             </b-table-column>
 
-            <b-table-column field="date" label="Sending at" centered v-slot="props">
+            <b-table-column field="date" :label="$t('newsletters.sendingAt')" centered v-slot="props">
                 <span class="tag is-success">
                     {{ new Date(props.row.sending_at).toLocaleDateString() }}
                 </span>
             </b-table-column>
 
-            <b-table-column field="date" label="Create at" centered v-slot="props">
+            <b-table-column field="date" :label="$t('newsletters.createAt')" centered v-slot="props">
                 <span class="tag is-success">
                     {{ new Date(props.row.created_at).toLocaleDateString() }}
                 </span>
             </b-table-column>
 
-            <b-table-column label="Delete" v-slot="props">
+            <b-table-column :label="$t('newsletters.delete')" v-slot="props">
                 <b-button @click="deletePopup(props.row.id, props.row.title)">
                     <b-icon icon="delete"/>
                 </b-button>

@@ -4,16 +4,16 @@
         <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
             <div class="column is-12-mobile is-12">
                 <form class="is-flex is-flex-wrap-wrap">
-                    <b-field class="column is-12-mobile is-6" label="Product title*">
-                        <b-input placeholder="Category title"
+                    <b-field class="column is-12-mobile is-6" :label="$t('categories.title')">
+                        <b-input :placeholder="$t('categories.title')"
                                  v-model="title"
                                  type="text"
                                  required
                                  maxlength="255">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Parent category*">
-                        <b-select placeholder="Select a category" v-model="category_id">
+                    <b-field class="column is-12-mobile is-6" :label="$t('categories.parentCategory')">
+                        <b-select :placeholder="$t('categories.parentCategory')" v-model="category_id">
                             <option
                                 v-for="option in data"
                                 :value="option.id"
@@ -23,7 +23,12 @@
                         </b-select>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">Create</b-button>
+                        <b-button type="is-primary"
+                                  expanded
+                                  @click="create"
+                                  v-if="!disableBtn">
+                            {{ $t('categories.create') }}
+                        </b-button>
                     </b-field>
                 </form>
             </div>

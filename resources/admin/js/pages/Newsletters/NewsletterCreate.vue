@@ -4,23 +4,23 @@
         <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
             <div class="column is-12-mobile is-12">
                 <form class="is-flex is-flex-wrap-wrap">
-                    <b-field class="column is-12-mobile is-6" label="Newsletter title*">
-                        <b-input placeholder="Newsletter title"
+                    <b-field class="column is-12-mobile is-6" :label="$t('newsletters.title')">
+                        <b-input :placeholder="$t('newsletters.title')"
                                  v-model="title"
                                  type="text"
                                  required
                                  maxlength="255">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Newsletter body*">
-                        <b-input placeholder="Newsletter body"
+                    <b-field class="column is-12-mobile is-6" :label="$t('newsletters.body')">
+                        <b-input :placeholder="$t('newsletters.body')"
                                  v-model="body"
                                  type="textarea"
                                  required
                                  maxlength="2000">
                         </b-input>
                     </b-field>
-                    <b-field class="column is-12-mobile is-6" label="Newsletter send*">
+                    <b-field class="column is-12-mobile is-6" :label="$t('newsletters.sendingAt')">
                         <b-datetimepicker
                             v-model="sending_at"
                             placeholder="Click to select..."
@@ -29,7 +29,7 @@
                         </b-datetimepicker>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">Create</b-button>
+                        <b-button type="is-primary" expanded @click="create" v-if="!disableBtn">{{ $t('newsletters.create') }}</b-button>
                     </b-field>
                 </form>
             </div>

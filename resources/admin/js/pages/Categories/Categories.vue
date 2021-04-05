@@ -6,7 +6,7 @@
                 <div class="column">
                     <div class="buttons">
                         <router-link to="categories/create" class="button is-primary">
-                            <strong>Create new category</strong>
+                            <strong>{{ $t('categories.createCategory') }}</strong>
                         </router-link>
                     </div>
                 </div>
@@ -14,15 +14,15 @@
             <b-table
                 :data="data.data" class="mb-3">
 
-                <b-table-column field="id" label="ID" width="40" numeric v-slot="props">
+                <b-table-column field="id" :label="$t('categories.id')" width="40" numeric v-slot="props">
                     {{ props.row.id }}
                 </b-table-column>
 
-                <b-table-column field="title" label="Title" v-slot="props">
+                <b-table-column field="title" :label="$t('categories.title')" v-slot="props">
                     {{ props.row.title }}
                 </b-table-column>
 
-                <b-table-column field="category" label="Parent category" v-slot="props">
+                <b-table-column field="category" :label="$t('categories.parentCategory')" v-slot="props">
                     <template v-if="props.row.category">
                         {{ props.row.category.title }}
                     </template>
@@ -31,23 +31,23 @@
                     </template>
                 </b-table-column>
 
-                <b-table-column field="products" label="Count of products" v-slot="props">
+                <b-table-column field="products" :label="$t('categories.countProducts')" v-slot="props">
                     {{ props.row.products.length }}
                 </b-table-column>
 
-                <b-table-column field="date" label="Date" centered v-slot="props">
+                <b-table-column field="date" :label="$t('categories.date')" centered v-slot="props">
                 <span class="tag is-success">
                     {{ new Date(props.row.created_at).toLocaleDateString() }}
                 </span>
                 </b-table-column>
 
-                <b-table-column label="Delete" v-slot="props">
+                <b-table-column :label="$t('categories.delete')" v-slot="props">
                     <b-button @click="deletePopup(props.row.id, props.row.title)">
                         <b-icon icon="delete"/>
                     </b-button>
                 </b-table-column>
 
-                <b-table-column label="Update" v-slot="props">
+                <b-table-column :label="$t('categories.update')" v-slot="props">
                     <b-button>
                         <router-link :to="'/admin/categories/' + props.row.id">
                             <b-icon icon="file-edit"/>

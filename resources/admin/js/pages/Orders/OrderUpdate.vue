@@ -4,10 +4,10 @@
         <div class="is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
             <div class="column is-12-mobile is-12">
                 <form class="is-flex is-flex-wrap-wrap">
-                    <b-field class="column is-12-mobile is-6" label="Order status*">
-                        <b-select placeholder="Select a category" v-model="order.status_id">
+                    <b-field class="column is-12-mobile is-6" :label="$t('orders.status')">
+                        <b-select :placeholder="$t('orders.status')" v-model="order.status_id">
                             <option
-                                v-for="option in data.data"
+                                v-for="option in data"
                                 :value="option.id"
                                 :key="option.id">
                                 {{ option.title }}
@@ -15,7 +15,7 @@
                         </b-select>
                     </b-field>
                     <b-field class="column is-12-mobile is-12">
-                        <b-button type="is-primary" expanded @click="update">Create</b-button>
+                        <b-button type="is-primary" expanded @click="update">{{ $t('orders.update') }}</b-button>
                     </b-field>
                 </form>
             </div>
@@ -41,7 +41,7 @@ export default {
     methods: {
         retrievApi() {
             api.request('get', `/api/order/${this.id}`).then((res) => {
-                this.order = data.data;
+                this.order = res.data;
             });
         },
         async retrievStatuses() {

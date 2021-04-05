@@ -9,28 +9,54 @@
             <div class="p-1 my-4">
                 <b-menu>
                     <b-menu-list>
-                        <b-menu-item label="Showcase">
-                            <b-menu-item label="Products" tag="router-link" to="/admin/products"></b-menu-item>
-                            <b-menu-item label="Categories" tag="router-link" to="/admin/categories"></b-menu-item>
+                        <b-menu-item :label="$t('sidebar.showcase')">
+                            <b-menu-item :label="$t('sidebar.products')" tag="router-link" to="/admin/products"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.categories')" tag="router-link" to="/admin/categories"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.attributes')" tag="router-link" to="/admin/attributes"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.tags')" tag="router-link" to="/admin/tags"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item label="Business">
-                            <b-menu-item label="Orders" tag="router-link" to="/admin/orders"></b-menu-item>
+                        <b-menu-item :label="$t('sidebar.business')">
+                            <b-menu-item :label="$t('sidebar.orders')" tag="router-link" to="/admin/orders"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.users')" tag="router-link" to="/admin/users"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.translations')" tag="router-link" to="/admin/translations"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item label="Localization">
-                            <b-menu-item label="Languages" tag="router-link" to="/admin/languages"></b-menu-item>
-                            <b-menu-item label="Currencies" tag="router-link" to="/admin/currencies"></b-menu-item>
+                        <b-menu-item :label="$t('sidebar.localization')">
+                            <b-menu-item :label="$t('sidebar.languages')" tag="router-link" to="/admin/languages"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.currencies')" tag="router-link" to="/admin/currencies"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item label="Newsletter">
-                            <b-menu-item label="News" tag="router-link" to="/admin/newsletters"></b-menu-item>
-                            <b-menu-item label="Promotions" tag="router-link" to="/admin/promotions"></b-menu-item>
+                        <b-menu-item :label="$t('sidebar.newsletter')">
+                            <b-menu-item :label="$t('sidebar.news')" tag="router-link" to="/admin/newsletters"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.promotions')" tag="router-link" to="/admin/promotions"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item label="Additional">
+                        <b-menu-item :label="$t('sidebar.shop')">
+                            <b-menu-item :label="$t('sidebar.themes')" tag="router-link" to="/admin/themes"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.modules')" tag="router-link" to="/admin/modules"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.settings')" tag="router-link" to="/admin/settings"></b-menu-item>
+                        </b-menu-item>
+                        <b-menu-item :label="$t('sidebar.importExport')">
+                            <b-menu-item :label="$t('sidebar.import')" tag="router-link" to="/admin/import"></b-menu-item>
+                            <b-menu-item :label="$t('sidebar.export')" tag="router-link" to="/admin/export"></b-menu-item>
+                        </b-menu-item>
+                        <b-menu-item :label="$t('sidebar.statistics')" tag="router-link" to="/admin/statistics"></b-menu-item>
+                        <b-menu-item>
+                            <template #label>
+                                {{ $t('sidebar.currentLanguage') }}
+                                <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
+                                    <template #trigger>
+                                        <b-icon icon="dots-vertical"></b-icon>
+                                    </template>
+                                    <b-dropdown-item aria-role="listitem" @click="setLocale('en')">EN</b-dropdown-item>
+                                    <b-dropdown-item aria-role="listitem" @click="setLocale('ru')">RU</b-dropdown-item>
+                                </b-dropdown>
+                            </template>
+                        </b-menu-item>
+                        <b-menu-item :label="$t('sidebar.additional')">
                             <div class="buttons">
                                 <a class="button is-primary" href="/">
-                                    <strong>Visit shop</strong>
+                                    <strong>{{ $t('sidebar.visitShop') }}</strong>
                                 </a>
                                 <a class="button is-light" @click="logout">
-                                    Logout
+                                    {{ $t('sidebar.logout') }}
                                 </a>
                             </div>
                         </b-menu-item>
@@ -57,10 +83,10 @@
                 <b-navbar-item tag="div">
                     <div class="buttons">
                         <a class="button is-primary" href="/">
-                            <strong>Visit shop</strong>
+                            <strong>{{ $t('sidebar.visitShop') }}</strong>
                         </a>
                         <a class="button is-light" @click="logout">
-                            Logout
+                            {{ $t('sidebar.logout') }}
                         </a>
                     </div>
                 </b-navbar-item>
@@ -81,6 +107,10 @@ export default {
         logout() {
             auth.logout();
             this.$router.push('/admin/login');
+        },
+        setLocale(locale) {
+            this.$i18n.locale = locale;
+            window.localStorage.setItem('locale', locale);
         }
     }
 }

@@ -6,7 +6,7 @@
             <div class="column">
                 <div class="buttons">
                     <router-link to="language/create" class="button is-primary">
-                        <strong>Create new language</strong>
+                        <strong>{{ $t('languages.createLanguage') }}</strong>
                     </router-link>
                 </div>
             </div>
@@ -18,21 +18,21 @@
                 {{ props.row.id }}
             </b-table-column>
 
-            <b-table-column field="title" label="Title" v-slot="props">
+            <b-table-column field="title" :label="$t('languages.title')" v-slot="props">
                 {{ props.row.title }}
             </b-table-column>
 
-            <b-table-column field="category" label="ISO" v-slot="props">
+            <b-table-column field="category" :label="$t('languages.iso')" v-slot="props">
                     {{ props.row.iso }}
             </b-table-column>
 
-            <b-table-column label="Delete" v-slot="props">
+            <b-table-column :label="$t('languages.delete')" v-slot="props">
                 <b-button @click="deletePopup(props.row.id, props.row.title)">
                     <b-icon icon="delete"/>
                 </b-button>
             </b-table-column>
 
-            <b-table-column label="Update" v-slot="props">
+            <b-table-column :label="$t('languages.update')" v-slot="props">
                 <b-button>
                     <router-link :to="'/admin/languages/' + props.row.id">
                         <b-icon icon="file-edit"/>
