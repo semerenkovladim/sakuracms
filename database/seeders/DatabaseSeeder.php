@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RolesSeeder::class,
+            CategoriesSeeder::class,
+            FilesSeeder::class
         ]);
         Country::factory()->count(10)->create();
         User::factory()->count(10)->create();

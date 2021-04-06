@@ -12,13 +12,9 @@
                         <b-menu-item :label="$t('sidebar.showcase')">
                             <b-menu-item :label="$t('sidebar.products')" tag="router-link" to="/admin/products"></b-menu-item>
                             <b-menu-item :label="$t('sidebar.categories')" tag="router-link" to="/admin/categories"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.attributes')" tag="router-link" to="/admin/attributes"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.tags')" tag="router-link" to="/admin/tags"></b-menu-item>
                         </b-menu-item>
                         <b-menu-item :label="$t('sidebar.business')">
                             <b-menu-item :label="$t('sidebar.orders')" tag="router-link" to="/admin/orders"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.users')" tag="router-link" to="/admin/users"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.translations')" tag="router-link" to="/admin/translations"></b-menu-item>
                         </b-menu-item>
                         <b-menu-item :label="$t('sidebar.localization')">
                             <b-menu-item :label="$t('sidebar.languages')" tag="router-link" to="/admin/languages"></b-menu-item>
@@ -28,16 +24,6 @@
                             <b-menu-item :label="$t('sidebar.news')" tag="router-link" to="/admin/newsletters"></b-menu-item>
                             <b-menu-item :label="$t('sidebar.promotions')" tag="router-link" to="/admin/promotions"></b-menu-item>
                         </b-menu-item>
-                        <b-menu-item :label="$t('sidebar.shop')">
-                            <b-menu-item :label="$t('sidebar.themes')" tag="router-link" to="/admin/themes"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.modules')" tag="router-link" to="/admin/modules"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.settings')" tag="router-link" to="/admin/settings"></b-menu-item>
-                        </b-menu-item>
-                        <b-menu-item :label="$t('sidebar.importExport')">
-                            <b-menu-item :label="$t('sidebar.import')" tag="router-link" to="/admin/import"></b-menu-item>
-                            <b-menu-item :label="$t('sidebar.export')" tag="router-link" to="/admin/export"></b-menu-item>
-                        </b-menu-item>
-                        <b-menu-item :label="$t('sidebar.statistics')" tag="router-link" to="/admin/statistics"></b-menu-item>
                         <b-menu-item>
                             <template #label>
                                 {{ $t('sidebar.currentLanguage') }}
