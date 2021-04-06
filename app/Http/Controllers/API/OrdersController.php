@@ -32,15 +32,14 @@ class OrdersController extends Controller
 
     public function update($id, UpdateOrderRequest $request) {
         $validate = $request->validated();
-
         $order = Order::find($id);
+	$status = OrderStatus::find($request->status_id);
         $order->status()->dissociate();
-        $status = OrderStatus::find($request->status_id);
         $order->status()->associate($status);
         $order->save();
         $order->user();
         $order_id = $order->id;
-        $username = $order->user->username;
+        $username = $order->user->name;
         $sendStatus = $status->title;
         $toEmail = $order->user->email;
         Mail::to($toEmail)->send(new FeedbackMail($order_id, $username, $sendStatus));
